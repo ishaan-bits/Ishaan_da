@@ -7,9 +7,9 @@ import { ChevronDown, Briefcase } from "lucide-react";
 const experiences = [
   {
     title: "ADAS Research Intern",
-    company: "WILP – BITS Pilani",
+    company: "WILP — BITS Pilani",
     period: "2025",
-    achievements: [
+    items: [
       "Built SUMOAPI v4 — a full-featured API for traffic simulation data",
       "Automated data pipelines for real-time traffic metrics collection",
       "Generated ML-ready datasets from simulation output",
@@ -19,102 +19,83 @@ const experiences = [
 ];
 
 export default function ExperienceSection() {
-  const [expanded, setExpanded] = useState<number | null>(0);
+  const [open, setOpen] = useState(0);
 
   return (
-    <section id="experience" className="relative py-32">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="experience" className="py-32">
+      <div className="mx-auto max-w-5xl px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <h2 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
-            <span className="text-gradient">Experience</span>
+          <p className="mb-4 text-[13px] text-white/40">Experience</p>
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Where I&apos;ve worked.
           </h2>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-cyan/40 via-emerald/20 to-transparent md:left-8" />
-
-          <div className="flex flex-col gap-8">
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative pl-16 md:pl-20"
+        <div className="space-y-3">
+          {experiences.map((exp, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="rounded-2xl border border-white/[0.04] bg-white/[0.015]"
+            >
+              <button
+                onClick={() => setOpen(open === i ? -1 : i)}
+                className="flex w-full items-center justify-between p-5 text-left"
               >
-                {/* Timeline dot */}
-                <div className="absolute left-4 top-6 flex h-5 w-5 items-center justify-center rounded-full border-2 border-cyan/40 bg-[#09090B] md:left-6">
-                  <div className="h-2 w-2 rounded-full bg-cyan" />
+                <div className="flex items-center gap-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04]">
+                    <Briefcase size={16} className="text-white/40" />
+                  </div>
+                  <div>
+                    <h3 className="text-[15px] font-medium text-white">
+                      {exp.title}
+                    </h3>
+                    <p className="text-[13px] text-white/35">
+                      {exp.company} · {exp.period}
+                    </p>
+                  </div>
                 </div>
-
-                <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm">
-                  <button
-                    onClick={() =>
-                      setExpanded(expanded === i ? null : i)
-                    }
-                    className="flex w-full items-center justify-between p-6 text-left"
+                <ChevronDown
+                  size={16}
+                  className={`text-white/20 transition-transform ${open === i ? "rotate-180" : ""}`}
+                />
+              </button>
+              <AnimatePresence>
+                {open === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="overflow-hidden"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan/10">
-                        <Briefcase size={18} className="text-cyan" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-white">
-                          {exp.title}
-                        </h3>
-                        <p className="text-sm text-white/40">
-                          {exp.company} • {exp.period}
-                        </p>
-                      </div>
+                    <div className="border-t border-white/[0.04] px-5 pb-5 pt-4">
+                      <ul className="space-y-2">
+                        {exp.items.map((item, j) => (
+                          <li
+                            key={j}
+                            className="flex items-start gap-2 text-[13px] text-white/45"
+                          >
+                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/20" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <motion.div
-                      animate={{ rotate: expanded === i ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown size={18} className="text-white/30" />
-                    </motion.div>
-                  </button>
-
-                  <AnimatePresence>
-                    {expanded === i && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="border-t border-white/[0.04] px-6 pb-6 pt-4">
-                          <ul className="flex flex-col gap-3">
-                            {exp.achievements.map((a, j) => (
-                              <motion.li
-                                key={j}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: j * 0.1 }}
-                                className="flex items-start gap-2 text-sm text-white/50"
-                              >
-                                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan/60" />
-                                {a}
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
