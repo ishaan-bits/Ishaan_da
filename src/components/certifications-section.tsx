@@ -7,12 +7,18 @@ const certs = [
   {
     title: "Deloitte Data Analytics Job Simulation",
     org: "Deloitte",
-    skills: ["Data Analysis", "Forensic Technology"],
+    period: "2024",
+    skills: ["Data Analysis", "Forensic Technology", "Problem Solving"],
+    description:
+      "Completed a job simulation covering data analysis methodologies, forensic technology techniques, and structured problem-solving approaches used in consulting engagements.",
   },
   {
     title: "NextLeap Product Manager Fellowship",
     org: "NextLeap",
-    skills: ["Product Management", "Strategy"],
+    period: "2024",
+    skills: ["Product Management", "Strategy", "User Research"],
+    description:
+      "Intensive fellowship covering product strategy, user research methodologies, roadmap planning, and cross-functional leadership skills for aspiring product managers.",
   },
 ];
 
@@ -31,6 +37,9 @@ export default function CertificationsSection() {
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             Continuous learning.
           </h2>
+          <p className="mt-4 max-w-lg text-[14px] text-white/35">
+            Complementary certifications in analytics, consulting, and product management.
+          </p>
         </motion.div>
 
         <div className="grid gap-4 md:grid-cols-2">
@@ -42,18 +51,24 @@ export default function CertificationsSection() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
               whileHover={{ y: -2 }}
-              className="glow-hover rounded-2xl border border-white/[0.04] bg-white/[0.015] p-5 transition-all hover:border-white/[0.08] hover:bg-white/[0.025]"
+              className="glow-hover rounded-2xl border border-white/[0.04] bg-white/[0.015] p-6 transition-all hover:border-white/[0.08] hover:bg-white/[0.025]"
             >
-              <div className="mb-3 flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04]">
-                  <Award size={14} className="text-white/30" />
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04]">
+                    <Award size={14} className="text-white/30" />
+                  </div>
+                  <span className="text-[13px] text-white/35">{cert.org}</span>
                 </div>
-                <span className="text-[13px] text-white/35">{cert.org}</span>
+                <span className="text-[11px] text-white/20">{cert.period}</span>
               </div>
-              <h3 className="mb-3 text-[15px] font-medium text-white/85">
+              <h3 className="mb-2 text-[15px] font-medium text-white/85">
                 {cert.title}
               </h3>
-              <div className="flex gap-2">
+              <p className="mb-4 text-[13px] leading-relaxed text-white/30">
+                {cert.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
                 {cert.skills.map((s) => (
                   <span
                     key={s}

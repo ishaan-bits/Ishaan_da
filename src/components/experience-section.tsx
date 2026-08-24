@@ -9,12 +9,17 @@ const experiences = [
     title: "ADAS Research Intern",
     company: "WILP — BITS Pilani",
     period: "2025",
+    type: "Research",
+    description:
+      "Worked on advanced driver-assistance systems (ADAS) research, building simulation infrastructure and data pipelines for traffic analysis.",
     items: [
-      "Built SUMOAPI v4 — a full-featured API for traffic simulation data",
-      "Automated data pipelines for real-time traffic metrics collection",
-      "Generated ML-ready datasets from simulation output",
-      "Reduced manual setup by 90% through workflow automation",
+      "Built SUMOAPI v4 — a full-featured API for traffic simulation data, supporting multiple network configurations and real-time data streaming",
+      "Automated data pipelines for real-time traffic metrics collection, processing data from 7-lane simulation networks spanning 10km",
+      "Generated ML-ready datasets from simulation output, enabling predictive traffic modeling and congestion analysis",
+      "Reduced manual setup by 90% through end-to-end workflow automation, cutting project onboarding time from hours to minutes",
+      "Designed 22+ configurable simulation features for different traffic scenarios and urban planning use cases",
     ],
+    tags: ["Python", "SUMO", "TraCI", "API Design", "Automation"],
   },
 ];
 
@@ -35,6 +40,9 @@ export default function ExperienceSection() {
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             Where I&apos;ve worked.
           </h2>
+          <p className="mt-4 max-w-lg text-[14px] text-white/35">
+            Building real-world data solutions in research and product environments.
+          </p>
         </motion.div>
 
         <div className="space-y-3">
@@ -52,7 +60,7 @@ export default function ExperienceSection() {
                 className="flex w-full items-center justify-between p-5 text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04] transition-colors group-hover:bg-white/[0.06]">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04]">
                     <Briefcase size={16} className="text-white/35" />
                   </div>
                   <div>
@@ -60,7 +68,7 @@ export default function ExperienceSection() {
                       {exp.title}
                     </h3>
                     <p className="text-[13px] text-white/30">
-                      {exp.company} · {exp.period}
+                      {exp.company} · {exp.period} · {exp.type}
                     </p>
                   </div>
                 </div>
@@ -79,7 +87,10 @@ export default function ExperienceSection() {
                     className="overflow-hidden"
                   >
                     <div className="border-t border-white/[0.04] px-5 pb-5 pt-4">
-                      <ul className="space-y-2.5">
+                      <p className="mb-4 text-[13px] leading-relaxed text-white/35">
+                        {exp.description}
+                      </p>
+                      <ul className="mb-4 space-y-2.5">
                         {exp.items.map((item, j) => (
                           <motion.li
                             key={j}
@@ -93,6 +104,16 @@ export default function ExperienceSection() {
                           </motion.li>
                         ))}
                       </ul>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1 text-[11px] text-white/30"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 )}
