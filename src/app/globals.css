@@ -105,3 +105,65 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* Background grid */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Animated gradient blob */
+@keyframes blob-move {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -40px) scale(1.05); }
+  50% { transform: translate(-20px, 20px) scale(0.95); }
+  75% { transform: translate(20px, 30px) scale(1.02); }
+}
+.animate-blob {
+  animation: blob-move 20s ease-in-out infinite;
+}
+.animate-blob-delayed {
+  animation: blob-move 25s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+/* Shimmer text */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.text-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Glow on hover for cards */
+.glow-hover {
+  position: relative;
+}
+.glow-hover::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(16,185,129,0.1));
+  z-index: -1;
+}
+.glow-hover:hover::before {
+  opacity: 1;
+}
+
+/* Magnetic button */
+.magnetic-btn {
+  transition: transform 0.2s ease;
+}
+.magnetic-btn:hover {
+  transform: scale(1.03);
+}
+.magnetic-btn:active {
+  transform: scale(0.98);
+}

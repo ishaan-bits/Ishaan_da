@@ -34,11 +34,11 @@ export default function SkillsSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="mb-4 text-[13px] text-white/40">Skills</p>
+          <p className="mb-4 text-[13px] text-white/30">Skills</p>
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             Tools I work with.
           </h2>
@@ -50,18 +50,19 @@ export default function SkillsSection() {
               key={cat.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
             >
-              <h3 className="mb-4 text-[13px] font-medium text-white/30">
+              <h3 className="mb-4 text-[11px] font-medium uppercase tracking-wider text-white/25">
                 {cat.name}
               </h3>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
                 {cat.items.map((item) => (
                   <div
                     key={item}
-                    className="text-[15px] text-white/60 transition-colors hover:text-white"
+                    className="group flex items-center gap-2 rounded-lg px-2 py-1.5 text-[14px] text-white/50 transition-all hover:bg-white/[0.03] hover:text-white/80"
                   >
+                    <span className="h-px w-0 bg-[#38BDF8]/40 transition-all group-hover:w-3" />
                     {item}
                   </div>
                 ))}

@@ -47,7 +47,7 @@ const projects: Project[] = [
       <div className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/30">
+            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
               Payment Methods
             </p>
             <ResponsiveContainer width="100%" height={140}>
@@ -69,13 +69,13 @@ const projects: Project[] = [
                 </Pie>
               </PieChart>
             </ResponsiveContainer>
-            <div className="mt-2 flex justify-center gap-4 text-[11px] text-white/40">
+            <div className="mt-2 flex justify-center gap-4 text-[11px] text-white/35">
               <span>Credit Card 77%</span>
               <span>Others 23%</span>
             </div>
           </div>
           <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/30">
+            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
               Monthly Trend
             </p>
             <ResponsiveContainer width="100%" height={160}>
@@ -116,7 +116,7 @@ const projects: Project[] = [
           </div>
         </div>
         <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-          <p className="mb-3 text-[11px] uppercase tracking-wider text-white/30">
+          <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
             Regional Demand Heatmap
           </p>
           <div className="grid grid-cols-10 gap-1">
@@ -162,13 +162,13 @@ const projects: Project[] = [
               <div className="text-lg font-semibold" style={{ color: k.color }}>
                 {k.value}
               </div>
-              <div className="mt-1 text-[11px] text-white/30">{k.label}</div>
+              <div className="mt-1 text-[11px] text-white/25">{k.label}</div>
             </div>
           ))}
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/30">
+            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
               Device Split
             </p>
             <ResponsiveContainer width="100%" height={130}>
@@ -194,7 +194,7 @@ const projects: Project[] = [
             </ResponsiveContainer>
           </div>
           <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/30">
+            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
               Campaign CTR
             </p>
             <ResponsiveContainer width="100%" height={130}>
@@ -245,7 +245,7 @@ const projects: Project[] = [
     content: (
       <div className="space-y-4">
         <div className="rounded-xl border border-white/[0.06] bg-[#0a0a0a] p-4">
-          <p className="mb-3 text-[11px] uppercase tracking-wider text-white/30">
+          <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
             Live Simulation
           </p>
           <div className="relative h-28 overflow-hidden rounded-lg bg-[#080808]">
@@ -259,8 +259,9 @@ const projects: Project[] = [
             {Array.from({ length: 10 }, (_, i) => (
               <div
                 key={i}
-                className="absolute h-1 w-3 rounded-sm"
+                className="h-1 w-3 rounded-sm"
                 style={{
+                  position: "absolute",
                   top: `${((i % 7) + 1) * 12.5 - 1}%`,
                   left: `${((i * 23 + 7) % 90)}%`,
                   backgroundColor:
@@ -275,7 +276,7 @@ const projects: Project[] = [
             ))}
           </div>
         </div>
-        <div className="rounded-xl border border-white/[0.06] bg-[#0a0a0a] p-4 font-mono text-[12px] leading-relaxed text-white/30">
+        <div className="rounded-xl border border-white/[0.06] bg-[#0a0a0a] p-4 font-mono text-[12px] leading-relaxed text-white/25">
           <div>
             <span className="text-[#A78BFA]">import</span> traci, sumolib
           </div>
@@ -308,7 +309,7 @@ const projects: Project[] = [
     content: (
       <div className="space-y-4">
         <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-          <p className="mb-4 text-[11px] uppercase tracking-wider text-white/30">
+          <p className="mb-4 text-[11px] uppercase tracking-wider text-white/25">
             Conversion Funnel
           </p>
           <div className="flex flex-col gap-2">
@@ -326,11 +327,11 @@ const projects: Project[] = [
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="flex items-center justify-between rounded-lg px-4 py-2.5"
                 style={{
-                  backgroundColor: `${s.c}0A`,
+                  backgroundColor: `${s.c}08`,
                   borderLeft: `2px solid ${s.c}`,
                 }}
               >
-                <span className="text-[13px] text-white/60">{s.label}</span>
+                <span className="text-[13px] text-white/55">{s.label}</span>
                 <span
                   className="text-[13px] font-medium"
                   style={{ color: s.c }}
@@ -343,16 +344,18 @@ const projects: Project[] = [
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/30">
+            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
               A/B Test
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-6">
               <div>
-                <div className="text-[11px] text-white/30">Control</div>
-                <div className="text-lg font-semibold text-white/50">12.4%</div>
+                <div className="text-[11px] text-white/25">Control</div>
+                <div className="text-lg font-semibold text-white/45">
+                  12.4%
+                </div>
               </div>
               <div>
-                <div className="text-[11px] text-[#F472B6]/60">Variant</div>
+                <div className="text-[11px] text-[#F472B6]/50">Variant</div>
                 <div className="text-lg font-semibold text-[#F472B6]">
                   14.6%
                 </div>
@@ -360,18 +363,18 @@ const projects: Project[] = [
             </div>
           </div>
           <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/30">
+            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
               Impact
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-6">
               <div>
-                <div className="text-[11px] text-white/30">LTV</div>
+                <div className="text-[11px] text-white/25">LTV</div>
                 <div className="text-lg font-semibold text-[#F472B6]">
                   +18%
                 </div>
               </div>
               <div>
-                <div className="text-[11px] text-white/30">NPS</div>
+                <div className="text-[11px] text-white/25">NPS</div>
                 <div className="text-lg font-semibold text-[#F472B6]">+10</div>
               </div>
             </div>
@@ -393,40 +396,39 @@ function ProjectCard({
     <motion.button
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4 }}
+      whileHover={{ y: -3 }}
       onClick={onClick}
-      className="group w-full text-left"
+      className="glow-hover group w-full rounded-2xl border border-white/[0.04] bg-white/[0.015] p-6 text-left transition-all hover:border-white/[0.08] hover:bg-white/[0.03]"
     >
-      <div className="rounded-2xl border border-white/[0.04] bg-white/[0.015] p-6 transition-all hover:border-white/[0.08] hover:bg-white/[0.025]">
-        <div className="mb-3 flex items-start justify-between">
-          <p
-            className="text-[11px] uppercase tracking-wider"
-            style={{ color: `${project.accent}99` }}
-          >
-            {project.category}
-          </p>
-          <ArrowUpRight
-            size={14}
-            className="text-white/15 transition-colors group-hover:text-white/40"
-          />
-        </div>
-        <h3 className="mb-2 text-lg font-medium text-white">
-          {project.title}
-        </h3>
-        <p className="mb-4 text-[13px] leading-relaxed text-white/35">
-          {project.description}
+      <div className="mb-3 flex items-start justify-between">
+        <p
+          className="text-[11px] uppercase tracking-wider"
+          style={{ color: `${project.accent}80` }}
+        >
+          {project.category}
         </p>
-        <div className="flex gap-3">
-          {project.metrics.map((m) => (
-            <div key={m.label}>
-              <div className="text-sm font-semibold text-white/70">
-                {m.value}
-              </div>
-              <div className="text-[11px] text-white/25">{m.label}</div>
+        <ArrowUpRight
+          size={14}
+          className="text-white/10 transition-all group-hover:text-white/40 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+      </div>
+      <h3 className="mb-2 text-[17px] font-medium text-white/90">
+        {project.title}
+      </h3>
+      <p className="mb-5 text-[13px] leading-relaxed text-white/30">
+        {project.description}
+      </p>
+      <div className="flex gap-4">
+        {project.metrics.map((m) => (
+          <div key={m.label}>
+            <div className="text-sm font-semibold text-white/60">
+              {m.value}
             </div>
-          ))}
-        </div>
+            <div className="text-[11px] text-white/20">{m.label}</div>
+          </div>
+        ))}
       </div>
     </motion.button>
   );
@@ -447,35 +449,35 @@ function ProjectModal({
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
       <motion.div
-        initial={{ scale: 0.96, opacity: 0, y: 10 }}
+        initial={{ scale: 0.95, opacity: 0, y: 15 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.96, opacity: 0, y: 10 }}
-        transition={{ duration: 0.25 }}
+        exit={{ scale: 0.95, opacity: 0, y: 15 }}
+        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
         onClick={(e) => e.stopPropagation()}
         className="relative max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-white/[0.06] bg-[#0c0c0c] p-6"
       >
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-white/40 transition-colors hover:text-white"
+          className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-white/40 transition-all hover:border-white/[0.15] hover:text-white"
         >
           <X size={14} />
         </button>
         <div className="mb-5">
           <p
             className="mb-1 text-[11px] uppercase tracking-wider"
-            style={{ color: `${project.accent}99` }}
+            style={{ color: `${project.accent}80` }}
           >
             {project.category}
           </p>
           <h3 className="text-xl font-medium text-white">{project.title}</h3>
         </div>
-        <div className="mb-4 flex flex-wrap gap-2">
+        <div className="mb-5 flex flex-wrap gap-2">
           {project.tags.map((t) => (
             <span
               key={t}
-              className="rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1 text-[11px] text-white/40"
+              className="rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1 text-[11px] text-white/35"
             >
               {t}
             </span>
@@ -496,11 +498,11 @@ export default function ProjectsSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="mb-4 text-[13px] text-white/40">Work</p>
+          <p className="mb-4 text-[13px] text-white/30">Work</p>
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             Selected projects.
           </h2>
