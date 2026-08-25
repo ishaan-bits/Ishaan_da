@@ -4,9 +4,10 @@ import Background from "@/components/background";
 import Cursor from "@/components/cursor";
 import Navbar from "@/components/navbar";
 import HeroSection from "@/components/hero-section";
-import AboutSection from "@/components/about-section";
-import SkillsSection from "@/components/skills-section";
+import Marquee from "@/components/marquee";
 import ProjectsSection from "@/components/projects-section";
+import SkillsSection from "@/components/skills-section";
+import AboutSection from "@/components/about-section";
 import ExperienceSection from "@/components/experience-section";
 import CertificationsSection from "@/components/certifications-section";
 import ContactSection from "@/components/contact-section";
@@ -20,6 +21,7 @@ export default function Home() {
       <Navbar />
       <main className="relative z-10">
         <HeroSection />
+        <Marquee />
         <ProjectsSection />
         <SkillsSection />
         <AboutSection />

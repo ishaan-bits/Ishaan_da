@@ -7,31 +7,37 @@ const capabilities = [
     num: "01",
     title: "SQL & DATABASES",
     desc: "Complex queries, window functions, CTEs, and data modeling across PostgreSQL, MySQL, and BigQuery.",
+    accent: "#38BDF8",
   },
   {
     num: "02",
     title: "PYTHON ANALYTICS",
-    desc: "Data wrangling with Pandas, statistical analysis with NumPy, and visualization with Matplotlib and Seaborn.",
+    desc: "Data wrangling with Pandas, statistical analysis with NumPy, and visualization with Matplotlib.",
+    accent: "#10B981",
   },
   {
     num: "03",
     title: "DASHBOARD DESIGN",
-    desc: "Interactive dashboards in Tableau and Recharts that tell clear stories and drive product decisions.",
+    desc: "Interactive dashboards in Tableau and Recharts that tell clear stories and drive decisions.",
+    accent: "#A78BFA",
   },
   {
     num: "04",
     title: "A/B TESTING",
-    desc: "Experiment design, statistical significance analysis, and actionable recommendations for product teams.",
+    desc: "Experiment design, statistical significance analysis, and actionable product recommendations.",
+    accent: "#F472B6",
   },
   {
     num: "05",
     title: "PRODUCT ANALYTICS",
-    desc: "Funnel analysis, user segmentation, cohort tracking, and behavioral insights that inform strategy.",
+    desc: "Funnel analysis, user segmentation, cohort tracking, and behavioral insights.",
+    accent: "#FBBF24",
   },
   {
     num: "06",
     title: "DATA PIPELINES",
     desc: "Automated ETL workflows, data cleaning, and ML-ready dataset generation from raw sources.",
+    accent: "#38BDF8",
   },
 ];
 
@@ -54,12 +60,14 @@ export default function SkillsSection() {
             className="font-extrabold leading-[0.95] tracking-[-0.03em]"
             style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
           >
-            Everything a build needs.
+            Everything
+            <br />
+            <span className="text-[var(--fg-muted)]">a build needs.</span>
           </h2>
         </motion.div>
 
-        {/* Capabilities grid */}
-        <div className="grid gap-0 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Capabilities grid — left accent border */}
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((cap, i) => (
             <motion.div
               key={cap.num}
@@ -67,12 +75,18 @@ export default function SkillsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="border-t border-white/5 p-6 transition-colors hover:bg-white/[0.02] sm:p-8"
+              className="group border-l-2 border-white/5 bg-white/[0.01] p-6 transition-all hover:border-l-[var(--accent)] hover:bg-white/[0.025] sm:p-8"
             >
-              <p className="mb-4 font-mono text-[10px] tracking-[0.35em] text-[var(--fg-dim)]">
-                {cap.num}
-              </p>
-              <h3 className="mb-3 text-sm font-medium tracking-[0.12em] text-white">
+              <div className="mb-4 flex items-center gap-3">
+                <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
+                  {cap.num}
+                </span>
+                <span
+                  className="h-1.5 w-1.5"
+                  style={{ backgroundColor: cap.accent, opacity: 0.5 }}
+                />
+              </div>
+              <h3 className="mb-3 text-sm font-medium tracking-[0.1em] text-white">
                 {cap.title}
               </h3>
               <p className="text-sm font-light leading-relaxed tracking-wide text-[var(--fg-dim)]">
@@ -92,11 +106,13 @@ export default function SkillsSection() {
         >
           <a
             href="#work"
-            className="group/btn inline-flex items-baseline font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)] transition-colors hover:text-[var(--fg-muted)]"
+            className="group/btn inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)] transition-colors hover:text-[var(--fg-muted)]"
             data-cursor-hover="true"
           >
-            SEE THESE IN ACTION →
-            <span className="btn-arrow ml-1 inline-block">↗</span>
+            SEE THESE IN ACTION
+            <span className="btn-arrow inline-block transition-transform group-hover/btn:translate-x-1">
+              →
+            </span>
           </a>
         </motion.div>
       </div>

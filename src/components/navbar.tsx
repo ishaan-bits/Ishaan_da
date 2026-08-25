@@ -8,7 +8,6 @@ const navItems = [
   { label: "CAPABILITIES", href: "#capabilities" },
   { label: "ABOUT", href: "#about" },
   { label: "EXPERIENCE", href: "#experience" },
-  { label: "[ CONTACT → ]", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -36,26 +35,35 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 sm:px-10 md:pl-24 md:pr-16">
           <a
             href="#"
-            className="font-mono text-[11px] tracking-[0.15em] text-white/60 transition-colors hover:text-white"
+            className="group flex items-center gap-2"
+            data-cursor-hover="true"
           >
-            ISHAAN
+            <span className="flex h-6 w-6 items-center justify-center border border-[var(--accent)]/30 bg-[var(--accent)]/5 font-mono text-[10px] text-[var(--accent)]">
+              I
+            </span>
+            <span className="font-mono text-[11px] tracking-[0.15em] text-white/60 transition-colors group-hover:text-white">
+              ISHAAN
+            </span>
           </a>
 
-          <nav className="hidden items-center gap-8 xl:flex">
+          <nav className="hidden items-center gap-1 xl:flex">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className={`font-mono text-[10px] tracking-[0.15em] transition-colors ${
-                  item.label.includes("CONTACT")
-                    ? "text-[var(--fg-muted)] hover:text-[var(--fg)]"
-                    : "text-white/40 hover:text-white/70"
-                }`}
+                className="rounded-sm px-3 py-1.5 font-mono text-[10px] tracking-[0.15em] text-white/35 transition-all hover:bg-white/[0.04] hover:text-white/70"
                 data-cursor-hover="true"
               >
                 {item.label}
               </a>
             ))}
+            <a
+              href="#contact"
+              className="ml-2 border border-[var(--accent)]/20 bg-[var(--accent)]/5 px-4 py-1.5 font-mono text-[10px] tracking-[0.15em] text-[var(--accent)] transition-all hover:bg-[var(--accent)]/10"
+              data-cursor-hover="true"
+            >
+              CONTACT
+            </a>
           </nav>
 
           {/* Mobile hamburger */}
@@ -90,6 +98,13 @@ export default function Navbar() {
               {item.label}
             </a>
           ))}
+          <a
+            href="#contact"
+            onClick={() => setMenuOpen(false)}
+            className="border border-[var(--accent)]/20 bg-[var(--accent)]/5 px-6 py-2 font-mono text-lg tracking-[0.15em] text-[var(--accent)]"
+          >
+            CONTACT
+          </a>
         </motion.div>
       )}
     </>

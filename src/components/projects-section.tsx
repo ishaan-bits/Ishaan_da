@@ -15,7 +15,6 @@ import {
   BarChart,
   Bar,
   CartesianGrid,
-  YAxis,
 } from "recharts";
 
 interface Project {
@@ -27,7 +26,7 @@ interface Project {
   longDescription: string;
   tags: string[];
   metrics: { label: string; value: string }[];
-  image: string;
+  accent: string;
   content: React.ReactNode;
 }
 
@@ -35,19 +34,19 @@ const projects: Project[] = [
   {
     id: "amazon",
     num: "01",
-    title: "AMAZON BRAZIL → INDIA",
-    category: "DATA ANALYSIS",
+    title: "Amazon Brazil → India Market Analysis",
+    category: "Data Analysis",
     description:
       "Analyzed 95,000+ customers and 32,000+ products using PostgreSQL to identify purchasing behavior and recommend an India market-entry strategy.",
     longDescription:
       "Conducted comprehensive analysis of Amazon Brazil's marketplace data to evaluate feasibility of entering the Indian e-commerce market. Processed 95K+ customer records and 32K+ product listings to uncover purchasing patterns, regional demand variations, and payment preferences.",
-    tags: ["SQL", "PostgreSQL", "Python", "Pandas", "Data Analysis"],
+    tags: ["SQL", "PostgreSQL", "Python", "Pandas"],
     metrics: [
       { label: "Customers", value: "95K+" },
       { label: "Products", value: "32K+" },
       { label: "SKUs", value: "6K+" },
     ],
-    image: "/project-amazon.jpg",
+    accent: "#10B981",
     content: (
       <div className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
@@ -69,29 +68,25 @@ const projects: Project[] = [
                   paddingAngle={4}
                   dataKey="value"
                 >
-                  <Cell fill="var(--accent)" />
+                  <Cell fill="#10B981" />
                   <Cell fill="rgba(255,255,255,0.06)" />
                 </Pie>
               </PieChart>
             </ResponsiveContainer>
-            <div className="mt-2 flex justify-center gap-4 font-mono text-[10px] text-[var(--fg-dim)]">
-              <span>Credit Card 77%</span>
-              <span>Others 23%</span>
-            </div>
           </div>
           <div className="border border-white/5 bg-white/[0.02] p-4">
             <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
               MONTHLY TREND
             </p>
-            <ResponsiveContainer width="100%" height={160}>
+            <ResponsiveContainer width="100%" height={140}>
               <LineChart
                 data={[
-                  { m: "Jan", v: 4000 },
-                  { m: "Feb", v: 5500 },
-                  { m: "Mar", v: 4800 },
-                  { m: "Apr", v: 7200 },
-                  { m: "May", v: 6100 },
-                  { m: "Jun", v: 8500 },
+                  { m: "J", v: 4000 },
+                  { m: "F", v: 5500 },
+                  { m: "M", v: 4800 },
+                  { m: "A", v: 7200 },
+                  { m: "M", v: 6100 },
+                  { m: "J", v: 8500 },
                 ]}
               >
                 <XAxis
@@ -111,7 +106,7 @@ const projects: Project[] = [
                 <Line
                   type="monotone"
                   dataKey="v"
-                  stroke="var(--accent)"
+                  stroke="#10B981"
                   strokeWidth={1.5}
                   dot={false}
                 />
@@ -125,33 +120,33 @@ const projects: Project[] = [
   {
     id: "swiggy",
     num: "02",
-    title: "SWIGGY ANALYTICS DASHBOARD",
-    category: "VISUALIZATION",
+    title: "Swiggy Analytics Dashboard",
+    category: "Visualization",
     description:
       "Tableau-style dashboard analyzing conversion rates, device traffic, and marketing campaign performance for a food delivery platform.",
     longDescription:
-      "Designed and built a comprehensive analytics dashboard for Swiggy, a leading food delivery platform. Tracked key metrics including conversion rates, bounce rates, session duration, and device distribution across 120K+ sessions.",
-    tags: ["Tableau", "BI", "Dashboard Design", "Marketing Analytics"],
+      "Designed and built a comprehensive analytics dashboard for Swiggy, tracking key metrics across 120K+ sessions including conversion rates, bounce rates, and device distribution.",
+    tags: ["Tableau", "BI", "Dashboard"],
     metrics: [
       { label: "Conversion", value: "45.6%" },
-      { label: "Bounce Rate", value: "22.7%" },
+      { label: "Bounce", value: "22.7%" },
       { label: "Sessions", value: "120K" },
     ],
-    image: "/project-swiggy.jpg",
+    accent: "#38BDF8",
     content: (
       <div className="space-y-4">
         <div className="grid grid-cols-3 gap-3">
           {[
             { label: "Conversion", value: "45.6%" },
-            { label: "Bounce Rate", value: "22.7%" },
-            { label: "Avg Session", value: "4m 32s" },
+            { label: "Bounce", value: "22.7%" },
+            { label: "Session", value: "4m 32s" },
           ].map((k) => (
             <div
               key={k.label}
               className="border border-white/5 bg-white/[0.02] p-3 text-center"
             >
               <div className="text-lg font-semibold text-white">{k.value}</div>
-              <div className="mt-1 font-mono text-[9px] tracking-wider text-[var(--fg-dim)]">
+              <div className="mt-1 font-mono text-[9px] text-[var(--fg-dim)]">
                 {k.label}
               </div>
             </div>
@@ -160,9 +155,9 @@ const projects: Project[] = [
         <div className="grid grid-cols-2 gap-4">
           <div className="border border-white/5 bg-white/[0.02] p-4">
             <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
-              DEVICE SPLIT
+              DEVICES
             </p>
-            <ResponsiveContainer width="100%" height={130}>
+            <ResponsiveContainer width="100%" height={120}>
               <PieChart>
                 <Pie
                   data={[
@@ -172,12 +167,12 @@ const projects: Project[] = [
                   ]}
                   cx="50%"
                   cy="50%"
-                  innerRadius={30}
-                  outerRadius={50}
+                  innerRadius={25}
+                  outerRadius={45}
                   paddingAngle={3}
                   dataKey="value"
                 >
-                  <Cell fill="var(--accent)" />
+                  <Cell fill="#38BDF8" />
                   <Cell fill="#A0A0A0" />
                   <Cell fill="#6A6560" />
                 </Pie>
@@ -186,15 +181,15 @@ const projects: Project[] = [
           </div>
           <div className="border border-white/5 bg-white/[0.02] p-4">
             <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
-              CAMPAIGN CTR
+              CAMPAIGNS
             </p>
-            <ResponsiveContainer width="100%" height={130}>
+            <ResponsiveContainer width="100%" height={120}>
               <BarChart
                 data={[
-                  { name: "Email", v: 4.2 },
-                  { name: "Social", v: 3.8 },
-                  { name: "Search", v: 5.1 },
-                  { name: "Display", v: 2.4 },
+                  { n: "E", v: 4.2 },
+                  { n: "S", v: 3.8 },
+                  { n: "G", v: 5.1 },
+                  { n: "D", v: 2.4 },
                 ]}
               >
                 <CartesianGrid
@@ -202,17 +197,12 @@ const projects: Project[] = [
                   stroke="rgba(255,255,255,0.04)"
                 />
                 <XAxis
-                  dataKey="name"
+                  dataKey="n"
                   tick={{ fill: "rgba(255,255,255,0.2)", fontSize: 10 }}
                   axisLine={false}
                   tickLine={false}
                 />
-                <YAxis
-                  tick={{ fill: "rgba(255,255,255,0.2)", fontSize: 10 }}
-                  axisLine={false}
-                  tickLine={false}
-                />
-                <Bar dataKey="v" fill="var(--accent)" />
+                <Bar dataKey="v" fill="#38BDF8" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -223,26 +213,26 @@ const projects: Project[] = [
   {
     id: "sumo",
     num: "03",
-    title: "SUMO TRAFFIC ANALYTICS",
-    category: "SIMULATION",
+    title: "SUMO Traffic Analytics",
+    category: "Simulation",
     description:
       "Built a traffic simulation analytics platform using Python, SUMO, and TraCI with automated data pipelines and ML-ready datasets.",
     longDescription:
-      "Developed a full-stack traffic simulation analytics system using SUMO and TraCI. Built automated data pipelines that collect real-time metrics from 7-lane traffic networks spanning 10km. Reduced manual setup by 90%.",
-    tags: ["Python", "SUMO", "TraCI", "Automation", "Data Pipelines"],
+      "Developed a full-stack traffic simulation analytics system using SUMO and TraCI. Automated data pipelines collecting real-time metrics from 7-lane networks spanning 10km.",
+    tags: ["Python", "SUMO", "TraCI", "Automation"],
     metrics: [
       { label: "Lanes", value: "7" },
       { label: "Network", value: "10 km" },
-      { label: "Automation", value: "90%" },
+      { label: "Auto", value: "90%" },
     ],
-    image: "/project-sumo.jpg",
+    accent: "#A78BFA",
     content: (
       <div className="space-y-4">
         <div className="border border-white/5 bg-[#0c0c0c] p-4">
           <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
-            LIVE SIMULATION
+            SIMULATION
           </p>
-          <div className="relative h-28 overflow-hidden bg-[#080808]">
+          <div className="relative h-24 overflow-hidden bg-[#080808]">
             {Array.from({ length: 7 }, (_, l) => (
               <div
                 key={l}
@@ -250,21 +240,17 @@ const projects: Project[] = [
                 style={{ top: `${(l + 1) * 12.5}%` }}
               />
             ))}
-            {Array.from({ length: 10 }, (_, i) => (
+            {Array.from({ length: 8 }, (_, i) => (
               <div
                 key={i}
                 className="h-1 w-3"
                 style={{
                   position: "absolute",
                   top: `${((i % 7) + 1) * 12.5 - 1}%`,
-                  left: `${((i * 23 + 7) % 90)}%`,
+                  left: `${((i * 27 + 5) % 85)}%`,
                   backgroundColor:
-                    i % 3 === 0
-                      ? "var(--accent)"
-                      : i % 3 === 1
-                        ? "#A0A0A0"
-                        : "#6A6560",
-                  opacity: 0.6,
+                    i % 3 === 0 ? "#A78BFA" : i % 3 === 1 ? "#38BDF8" : "#10B981",
+                  opacity: 0.5,
                 }}
               />
             ))}
@@ -272,16 +258,13 @@ const projects: Project[] = [
         </div>
         <div className="border border-white/5 bg-[#0c0c0c] p-4 font-mono text-[11px] leading-relaxed text-[var(--fg-dim)]">
           <div>
-            <span className="text-[var(--fg-muted)]">import</span> traci, sumolib
+            <span className="text-[var(--accent)]">import</span> traci
           </div>
           <div className="mt-1">
-            <span className="text-[var(--fg-muted)]">def</span>{" "}
-            <span className="text-white/60">run_simulation</span>():
+            <span className="text-[var(--accent)]">def</span>{" "}
+            <span className="text-white/50">run</span>():
           </div>
           <div className="pl-3">traci.start(cmd)</div>
-          <div className="pl-3">
-            <span className="text-[var(--fg-muted)]">while</span> step(): collect()
-          </div>
         </div>
       </div>
     ),
@@ -289,24 +272,24 @@ const projects: Project[] = [
   {
     id: "hinge",
     num: "04",
-    title: "HINGE MATCH-TO-MEET FUNNEL",
-    category: "PRODUCT ANALYTICS",
+    title: "Hinge Match-to-Meet Funnel",
+    category: "Product Analytics",
     description:
       "Analyzed the complete user funnel from matches to meetups and ran A/B tests that increased LTV by 18%.",
     longDescription:
-      "Analyzed the full user lifecycle on Hinge — from match to chat to date to meetup — identifying critical drop-off points. Designed and ran A/B tests that drove 18% LTV increase and 3× premium subscription likelihood.",
-    tags: ["A/B Testing", "Funnel Analysis", "SQL", "Product Strategy"],
+      "Analyzed the full user lifecycle on Hinge, identifying critical drop-off points. A/B tests drove 18% LTV increase, 3× premium likelihood, and +10 NPS.",
+    tags: ["A/B Testing", "Funnel", "SQL"],
     metrics: [
-      { label: "LTV Increase", value: "+18%" },
+      { label: "LTV", value: "+18%" },
       { label: "Premium", value: "3×" },
       { label: "NPS", value: "+10" },
     ],
-    image: "/project-hinge.jpg",
+    accent: "#F472B6",
     content: (
       <div className="space-y-4">
         <div className="border border-white/5 bg-white/[0.02] p-4">
           <p className="mb-4 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
-            CONVERSION FUNNEL
+            FUNNEL
           </p>
           <div className="flex flex-col gap-2">
             {[
@@ -321,7 +304,7 @@ const projects: Project[] = [
                 whileInView={{ width: s.w }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-center justify-between border-l-2 border-[var(--fg-dim)] bg-white/[0.02] px-4 py-2.5"
+                className="flex items-center justify-between border-l-2 border-[var(--accent)] bg-white/[0.02] px-4 py-2"
               >
                 <span className="text-[13px] text-[var(--fg-muted)]">
                   {s.label}
@@ -341,17 +324,19 @@ const projects: Project[] = [
             <div className="flex gap-6">
               <div>
                 <div className="font-mono text-[9px] text-[var(--fg-dim)]">
-                  CONTROL
+                  CTRL
                 </div>
                 <div className="text-lg font-semibold text-[var(--fg-muted)]">
                   12.4%
                 </div>
               </div>
               <div>
-                <div className="font-mono text-[9px] text-white/50">
-                  VARIANT
+                <div className="font-mono text-[9px] text-[var(--accent)]">
+                  VAR
                 </div>
-                <div className="text-lg font-semibold text-white">14.6%</div>
+                <div className="text-lg font-semibold text-[var(--accent)]">
+                  14.6%
+                </div>
               </div>
             </div>
           </div>
@@ -361,16 +346,16 @@ const projects: Project[] = [
             </p>
             <div className="space-y-1.5">
               {[
-                { label: "LTV", value: "+18%" },
-                { label: "Premium", value: "3×" },
-                { label: "NPS", value: "+10" },
-              ].map((item) => (
+                { l: "LTV", v: "+18%" },
+                { l: "Premium", v: "3×" },
+                { l: "NPS", v: "+10" },
+              ].map((i) => (
                 <div
-                  key={item.label}
-                  className="flex items-center justify-between text-[13px]"
+                  key={i.l}
+                  className="flex justify-between text-[13px]"
                 >
-                  <span className="text-[var(--fg-dim)]">{item.label}</span>
-                  <span className="font-medium text-white">{item.value}</span>
+                  <span className="text-[var(--fg-dim)]">{i.l}</span>
+                  <span className="font-medium text-white">{i.v}</span>
                 </div>
               ))}
             </div>
@@ -453,60 +438,57 @@ export default function ProjectsSection() {
           className="mb-16"
         >
           <p className="mb-4 font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
-            04 // WORK
+            02 // WORK
           </p>
           <h2
             className="font-extrabold leading-[0.95] tracking-[-0.03em]"
             style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
           >
-            Systems
+            Selected
             <br />
-            <span className="text-[var(--fg-muted)]">shipped.</span>
+            projects.
           </h2>
         </motion.div>
 
-        {/* Project exhibits */}
-        <div className="flex flex-col gap-0">
+        {/* Project cards — left-accent border style */}
+        <div className="flex flex-col gap-4">
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group/exhibit border-t border-white/5"
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              className="group border-l-2 border-white/5 bg-white/[0.01] p-6 transition-all hover:border-l-[var(--accent)] hover:bg-white/[0.025] sm:p-8"
             >
-              <div className="grid gap-6 py-10 sm:py-16 lg:grid-cols-[45%_55%] lg:gap-10">
-                {/* Image */}
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="img-grayscale aspect-[16/10] w-full object-cover"
-                  />
-                  <div className="absolute inset-0 shadow-[inset_0_0_80px_40px_var(--bg)]" />
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col justify-center">
-                  <p className="mb-3 font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
-                    {project.num} {"//"} SYSTEM EXHIBIT
-                  </p>
-                  <h3
-                    className="mb-4 font-extrabold leading-[0.95] tracking-[-0.03em] text-white"
-                    style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
-                  >
+              <div className="grid gap-6 lg:grid-cols-[1fr_2fr] lg:gap-10">
+                {/* Left: meta */}
+                <div>
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
+                      {project.num}
+                    </span>
+                    <span className="h-px flex-1 bg-white/5" />
+                    <span
+                      className="font-mono text-[10px] tracking-[0.15em]"
+                      style={{ color: `${project.accent}99` }}
+                    >
+                      {project.category}
+                    </span>
+                  </div>
+                  <h3 className="mb-3 text-lg font-medium text-white">
                     {project.title}
                   </h3>
-                  <p className="mb-6 max-w-[520px] text-sm font-light leading-relaxed tracking-wide text-[var(--fg-muted)]">
+                  <p className="mb-5 text-sm font-light leading-relaxed tracking-wide text-[var(--fg-muted)]">
                     {project.description}
                   </p>
-
-                  {/* Metrics */}
-                  <div className="mb-6 flex gap-6">
+                  <div className="mb-5 flex gap-5">
                     {project.metrics.map((m) => (
                       <div key={m.label}>
-                        <div className="text-lg font-semibold text-white">
+                        <div
+                          className="text-lg font-semibold"
+                          style={{ color: project.accent }}
+                        >
                           {m.value}
                         </div>
                         <div className="mt-0.5 font-mono text-[9px] tracking-[0.15em] text-[var(--fg-dim)]">
@@ -515,57 +497,42 @@ export default function ProjectsSection() {
                       </div>
                     ))}
                   </div>
-
-                  {/* Tags */}
-                  <div className="mb-6 flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-[9px] tracking-[0.1em] text-[var(--fg-dim)]"
+                        className="border border-white/5 px-2.5 py-1 font-mono text-[9px] tracking-wider text-[var(--fg-dim)]"
                       >
                         {t}
-                        {t !== project.tags[project.tags.length - 1] && " /"}
                       </span>
                     ))}
                   </div>
+                </div>
 
-                  {/* Actions */}
-                  <div className="flex items-center gap-6">
-                    <button
-                      onClick={() => setSelected(project)}
-                      className="group/btn inline-flex items-baseline font-mono text-[10px] tracking-[0.2em] text-white transition-colors hover:text-gray-300"
-                      data-cursor-hover="true"
-                    >
-                      [ VIEW DETAILS ]
-                      <span className="btn-arrow ml-1 inline-block">↗</span>
-                    </button>
-                    <span className="font-mono text-[9px] tracking-wider text-[var(--fg-dim)]">
-                      {project.tags[0]} / {project.tags[1]}
-                    </span>
+                {/* Right: chart preview */}
+                <div className="hidden lg:block">
+                  <div className="border border-white/5 bg-white/[0.015] p-4">
+                    <p className="mb-3 font-mono text-[9px] tracking-[0.2em] text-[var(--fg-dim)]">
+                      PREVIEW
+                    </p>
+                    <div className="h-48">{project.content}</div>
                   </div>
                 </div>
+              </div>
+
+              {/* Mobile: expand button */}
+              <div className="mt-5 lg:hidden">
+                <button
+                  onClick={() => setSelected(project)}
+                  className="font-mono text-[10px] tracking-[0.15em] text-[var(--accent)] transition-colors hover:text-white"
+                  data-cursor-hover="true"
+                >
+                  [ VIEW DETAILS → ]
+                </button>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="mt-12 border-t border-white/5 pt-8"
-        >
-          <a
-            href="#contact"
-            className="group/btn inline-flex items-baseline font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)] transition-colors hover:text-[var(--fg-muted)]"
-            data-cursor-hover="true"
-          >
-            WANT SOMETHING LIKE THIS? START A BUILD →
-            <span className="btn-arrow ml-1 inline-block">↗</span>
-          </a>
-        </motion.div>
       </div>
 
       <AnimatePresence>
