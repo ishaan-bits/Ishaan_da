@@ -382,9 +382,9 @@ function ProjectModal({
         initial={{ scale: 0.96, opacity: 0, y: 10 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.96, opacity: 0, y: 10 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
         onClick={(e) => e.stopPropagation()}
-        className="relative max-h-[85vh] w-full max-w-xl overflow-y-auto border border-white/5 bg-[#0c0c0c] p-6"
+        className="relative max-h-[85vh] w-full max-w-3xl overflow-y-auto border border-white/10 bg-[#0c0c0c] p-8"
       >
         <button
           onClick={onClose}
@@ -456,9 +456,10 @@ export default function ProjectsSection() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -2 }}
-              className="group border-l-2 border-white/10 bg-white/[0.015] p-6 duration-300 hover:border-l-[var(--accent)] hover:bg-white/[0.03] hover:shadow-[0_0_30px_-10px_var(--accent)] sm:p-8"
+              onClick={() => setSelected(project)}
+              className="group cursor-pointer border-l-2 border-white/10 bg-white/[0.015] p-6 duration-300 hover:border-l-[var(--accent)] hover:bg-white/[0.03] hover:shadow-[0_0_30px_-10px_var(--accent)] sm:p-8"
             >
-              <div className="grid gap-6 lg:grid-cols-[1fr_2fr] lg:gap-10">
+              <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:gap-10">
                 {/* Left: meta */}
                 <div>
                   <div className="mb-4 flex items-center gap-3">
@@ -506,26 +507,30 @@ export default function ProjectsSection() {
                   </div>
                 </div>
 
-                {/* Right: chart preview */}
-                <div className="hidden lg:block">
-                  <div className="overflow-hidden border border-white/5 bg-white/[0.015] p-4">
-                    <p className="mb-3 font-mono text-[9px] tracking-[0.2em] text-[var(--fg-dim)]">
-                      PREVIEW
-                    </p>
-                    <div className="h-48 overflow-hidden">{project.content}</div>
+                {/* Right: chart preview — click to expand */}
+                <div className="hidden items-center justify-center lg:flex">
+                  <div className="w-full border border-white/5 bg-white/[0.015] p-5 transition-colors group-hover:border-white/10">
+                    <div className="mb-3 flex items-center justify-between">
+                      <p className="font-mono text-[9px] tracking-[0.2em] text-[var(--fg-dim)]">
+                        PREVIEW
+                      </p>
+                      <span className="font-mono text-[9px] tracking-[0.15em] text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100">
+                        CLICK TO EXPAND →
+                      </span>
+                    </div>
+                    <div className="h-52">{project.content}</div>
                   </div>
                 </div>
               </div>
 
               {/* Mobile: expand button */}
               <div className="mt-5 lg:hidden">
-                <button
-                  onClick={() => setSelected(project)}
+                <span
                   className="font-mono text-[10px] tracking-[0.15em] text-[var(--accent)] transition-colors hover:text-white"
                   data-cursor-hover="true"
                 >
                   [ VIEW DETAILS → ]
-                </button>
+                </span>
               </div>
             </motion.div>
           ))}
