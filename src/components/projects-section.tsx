@@ -262,18 +262,6 @@ const projects: Project[] = [
             </div>
           </div>
         </div>
-        <div className="border border-white/5 bg-[#0c0c0c] p-4 font-mono text-[11px] leading-relaxed text-[var(--fg-dim)]">
-          <div>
-            <span className="text-[var(--accent)]">import</span> traci, csv
-          </div>
-          <div className="mt-1">
-            <span className="text-[var(--accent)]">def</span>{" "}
-            <span className="text-white/50">log_relative</span>():
-          </div>
-          <div className="pl-3">
-            w.writerow([step, time, subject_id, ...])
-          </div>
-        </div>
       </div>
     ),
   },
@@ -520,11 +508,11 @@ export default function ProjectsSection() {
 
                 {/* Right: chart preview */}
                 <div className="hidden lg:block">
-                  <div className="border border-white/5 bg-white/[0.015] p-4">
+                  <div className="overflow-hidden border border-white/5 bg-white/[0.015] p-4">
                     <p className="mb-3 font-mono text-[9px] tracking-[0.2em] text-[var(--fg-dim)]">
                       PREVIEW
                     </p>
-                    <div className="h-48">{project.content}</div>
+                    <div className="h-48 overflow-hidden">{project.content}</div>
                   </div>
                 </div>
               </div>
