@@ -88,7 +88,7 @@ export default function AboutSection() {
               <img
                 src="/portrait.png"
                 alt="Ishaan Parimal"
-                className="img-grayscale aspect-[3/4] w-full object-cover"
+                className="aspect-[3/4] w-full object-cover"
               />
               <div className="absolute inset-0 shadow-[inset_0_0_60px_30px_var(--bg)]" />
             </div>
