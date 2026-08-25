@@ -3,83 +3,95 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const navItems = ["About", "Work", "Skills", "Experience", "Contact"];
+const navItems = [
+  { label: "WORK", href: "#work" },
+  { label: "CAPABILITIES", href: "#capabilities" },
+  { label: "ABOUT", href: "#about" },
+  { label: "EXPERIENCE", href: "#experience" },
+  { label: "[ CONTACT → ]", href: "#contact" },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 60);
-      const sections = navItems.map((s) =>
-        document.getElementById(s.toLowerCase())
-      );
-      const pos = window.scrollY + 200;
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (sections[i] && sections[i]!.offsetTop <= pos) {
-          setActive(navItems[i]);
-          break;
-        }
-      }
-    };
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.1 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "border-b border-white/[0.04] bg-[#050505]/70 backdrop-blur-2xl"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a
-          href="#"
-          className="group text-sm font-semibold tracking-wide text-white/90"
-        >
-          <span className="bg-gradient-to-r from-white/90 to-white/50 bg-clip-text text-transparent transition-all group-hover:from-white group-hover:to-white/70">
-            ishaan
-          </span>
-        </a>
+    <>
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "border-b border-white/5 bg-[#0A0A0A]/80 backdrop-blur-xl"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 sm:px-10 md:pl-24 md:pr-16">
+          <a
+            href="#"
+            className="font-mono text-[11px] tracking-[0.15em] text-white/60 transition-colors hover:text-white"
+          >
+            ISHAAN
+          </a>
 
-        <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-8 xl:flex">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className={`font-mono text-[10px] tracking-[0.15em] transition-colors ${
+                  item.label.includes("CONTACT")
+                    ? "text-[var(--fg-muted)] hover:text-[var(--fg)]"
+                    : "text-white/40 hover:text-white/70"
+                }`}
+                data-cursor-hover="true"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex flex-col gap-1.5 xl:hidden"
+          >
+            <span
+              className={`h-px w-5 bg-white transition-all ${menuOpen ? "translate-y-[3.5px] rotate-45" : ""}`}
+            />
+            <span
+              className={`h-px w-5 bg-white transition-all ${menuOpen ? "-translate-y-[3.5px] -rotate-45" : ""}`}
+            />
+          </button>
+        </div>
+      </motion.header>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-[#0A0A0A]/95 backdrop-blur-xl xl:hidden"
+        >
           {navItems.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="relative rounded-lg px-3 py-1.5 text-[13px] transition-colors hover:text-white/80"
+              key={item.label}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+              className="font-mono text-lg tracking-[0.15em] text-white/60 transition-colors hover:text-white"
             >
-              <span
-                className={
-                  active === item ? "text-white" : "text-white/35"
-                }
-              >
-                {item}
-              </span>
-              {active === item && (
-                <motion.div
-                  layoutId="navIndicator"
-                  className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
+              {item.label}
             </a>
           ))}
-        </nav>
-
-        <a
-          href="#contact"
-          className="magnetic-btn rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5 text-[13px] text-white/50 backdrop-blur-sm transition-all hover:border-white/[0.15] hover:text-white/80"
-        >
-          Get in touch
-        </a>
-      </div>
-    </motion.header>
+        </motion.div>
+      )}
+    </>
   );
 }

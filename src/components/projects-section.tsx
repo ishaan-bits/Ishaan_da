@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowUpRight } from "lucide-react";
+import { X } from "lucide-react";
 import {
   PieChart,
   Pie,
@@ -20,39 +20,40 @@ import {
 
 interface Project {
   id: string;
+  num: string;
   title: string;
   category: string;
   description: string;
   longDescription: string;
   tags: string[];
   metrics: { label: string; value: string }[];
-  accent: string;
+  image: string;
   content: React.ReactNode;
 }
 
 const projects: Project[] = [
   {
     id: "amazon",
-    title: "Amazon Brazil → India Market Analysis",
-    category: "Data Analysis",
+    num: "01",
+    title: "AMAZON BRAZIL → INDIA",
+    category: "DATA ANALYSIS",
     description:
       "Analyzed 95,000+ customers and 32,000+ products using PostgreSQL to identify purchasing behavior and recommend an India market-entry strategy.",
     longDescription:
-      "Conducted comprehensive analysis of Amazon Brazil's marketplace data to evaluate feasibility of entering the Indian e-commerce market. Processed 95K+ customer records and 32K+ product listings to uncover purchasing patterns, regional demand variations, and payment preferences. Delivered actionable recommendations backed by data that could guide market-entry timing, product selection, and pricing strategy.",
+      "Conducted comprehensive analysis of Amazon Brazil's marketplace data to evaluate feasibility of entering the Indian e-commerce market. Processed 95K+ customer records and 32K+ product listings to uncover purchasing patterns, regional demand variations, and payment preferences.",
     tags: ["SQL", "PostgreSQL", "Python", "Pandas", "Data Analysis"],
     metrics: [
       { label: "Customers", value: "95K+" },
       { label: "Products", value: "32K+" },
       { label: "SKUs", value: "6K+" },
-      { label: "Queries", value: "50+" },
     ],
-    accent: "#10B981",
+    image: "/project-amazon.jpg",
     content: (
       <div className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
-              Payment Methods
+          <div className="border border-white/5 bg-white/[0.02] p-4">
+            <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
+              PAYMENT METHODS
             </p>
             <ResponsiveContainer width="100%" height={140}>
               <PieChart>
@@ -68,19 +69,19 @@ const projects: Project[] = [
                   paddingAngle={4}
                   dataKey="value"
                 >
-                  <Cell fill="#10B981" />
+                  <Cell fill="var(--accent)" />
                   <Cell fill="rgba(255,255,255,0.06)" />
                 </Pie>
               </PieChart>
             </ResponsiveContainer>
-            <div className="mt-2 flex justify-center gap-4 text-[11px] text-white/35">
+            <div className="mt-2 flex justify-center gap-4 font-mono text-[10px] text-[var(--fg-dim)]">
               <span>Credit Card 77%</span>
               <span>Others 23%</span>
             </div>
           </div>
-          <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
-              Monthly Trend
+          <div className="border border-white/5 bg-white/[0.02] p-4">
+            <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
+              MONTHLY TREND
             </p>
             <ResponsiveContainer width="100%" height={160}>
               <LineChart
@@ -103,7 +104,6 @@ const projects: Project[] = [
                   contentStyle={{
                     background: "#111",
                     border: "1px solid rgba(255,255,255,0.08)",
-                    borderRadius: 8,
                     color: "#fff",
                     fontSize: 12,
                   }}
@@ -111,7 +111,7 @@ const projects: Project[] = [
                 <Line
                   type="monotone"
                   dataKey="v"
-                  stroke="#10B981"
+                  stroke="var(--accent)"
                   strokeWidth={1.5}
                   dot={false}
                 />
@@ -119,64 +119,48 @@ const projects: Project[] = [
             </ResponsiveContainer>
           </div>
         </div>
-        <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-          <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
-            Regional Demand Heatmap
-          </p>
-          <div className="grid grid-cols-10 gap-1">
-            {Array.from({ length: 30 }, (_, i) => (
-              <div
-                key={i}
-                className="aspect-square rounded-[2px]"
-                style={{
-                  backgroundColor: `rgba(16,185,129,${0.1 + ((i * 7 + 3) % 6) * 0.12})`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
       </div>
     ),
   },
   {
     id: "swiggy",
-    title: "Swiggy Analytics Dashboard",
-    category: "Visualization",
+    num: "02",
+    title: "SWIGGY ANALYTICS DASHBOARD",
+    category: "VISUALIZATION",
     description:
       "Tableau-style dashboard analyzing conversion rates, device traffic, and marketing campaign performance for a food delivery platform.",
     longDescription:
-      "Designed and built a comprehensive analytics dashboard for Swiggy, a leading food delivery platform. Tracked key metrics including conversion rates, bounce rates, session duration, and device distribution. Analyzed marketing campaign performance across channels to identify highest-ROI acquisition strategies. The dashboard enabled stakeholders to make data-driven decisions on UX improvements and marketing spend allocation.",
+      "Designed and built a comprehensive analytics dashboard for Swiggy, a leading food delivery platform. Tracked key metrics including conversion rates, bounce rates, session duration, and device distribution across 120K+ sessions.",
     tags: ["Tableau", "BI", "Dashboard Design", "Marketing Analytics"],
     metrics: [
       { label: "Conversion", value: "45.6%" },
       { label: "Bounce Rate", value: "22.7%" },
-      { label: "Mobile", value: "68%" },
       { label: "Sessions", value: "120K" },
     ],
-    accent: "#38BDF8",
+    image: "/project-swiggy.jpg",
     content: (
       <div className="space-y-4">
         <div className="grid grid-cols-3 gap-3">
           {[
-            { label: "Conversion", value: "45.6%", color: "#38BDF8" },
-            { label: "Bounce Rate", value: "22.7%", color: "#F472B6" },
-            { label: "Avg Session", value: "4m 32s", color: "#10B981" },
+            { label: "Conversion", value: "45.6%" },
+            { label: "Bounce Rate", value: "22.7%" },
+            { label: "Avg Session", value: "4m 32s" },
           ].map((k) => (
             <div
               key={k.label}
-              className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3 text-center"
+              className="border border-white/5 bg-white/[0.02] p-3 text-center"
             >
-              <div className="text-lg font-semibold" style={{ color: k.color }}>
-                {k.value}
+              <div className="text-lg font-semibold text-white">{k.value}</div>
+              <div className="mt-1 font-mono text-[9px] tracking-wider text-[var(--fg-dim)]">
+                {k.label}
               </div>
-              <div className="mt-1 text-[11px] text-white/25">{k.label}</div>
             </div>
           ))}
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
-              Device Split
+          <div className="border border-white/5 bg-white/[0.02] p-4">
+            <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
+              DEVICE SPLIT
             </p>
             <ResponsiveContainer width="100%" height={130}>
               <PieChart>
@@ -193,16 +177,16 @@ const projects: Project[] = [
                   paddingAngle={3}
                   dataKey="value"
                 >
-                  <Cell fill="#38BDF8" />
-                  <Cell fill="#A78BFA" />
-                  <Cell fill="#10B981" />
+                  <Cell fill="var(--accent)" />
+                  <Cell fill="#A0A0A0" />
+                  <Cell fill="#6A6560" />
                 </Pie>
               </PieChart>
             </ResponsiveContainer>
           </div>
-          <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
-              Campaign CTR
+          <div className="border border-white/5 bg-white/[0.02] p-4">
+            <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
+              CAMPAIGN CTR
             </p>
             <ResponsiveContainer width="100%" height={130}>
               <BarChart
@@ -228,7 +212,7 @@ const projects: Project[] = [
                   axisLine={false}
                   tickLine={false}
                 />
-                <Bar dataKey="v" fill="#38BDF8" radius={[3, 3, 0, 0]} />
+                <Bar dataKey="v" fill="var(--accent)" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -238,27 +222,27 @@ const projects: Project[] = [
   },
   {
     id: "sumo",
-    title: "SUMO Traffic Analytics",
-    category: "Simulation",
+    num: "03",
+    title: "SUMO TRAFFIC ANALYTICS",
+    category: "SIMULATION",
     description:
       "Built a traffic simulation analytics platform using Python, SUMO, and TraCI with automated data pipelines and ML-ready datasets.",
     longDescription:
-      "Developed a full-stack traffic simulation analytics system using SUMO (Simulation of Urban Mobility) and TraCI. Built automated data pipelines that collect real-time metrics from 7-lane traffic networks spanning 10km. Generated ML-ready datasets for predictive traffic modeling. Reduced manual data collection setup by 90% through end-to-end automation. The system supports 22+ configurable features for different simulation scenarios.",
+      "Developed a full-stack traffic simulation analytics system using SUMO and TraCI. Built automated data pipelines that collect real-time metrics from 7-lane traffic networks spanning 10km. Reduced manual setup by 90%.",
     tags: ["Python", "SUMO", "TraCI", "Automation", "Data Pipelines"],
     metrics: [
       { label: "Lanes", value: "7" },
       { label: "Network", value: "10 km" },
-      { label: "Features", value: "22+" },
       { label: "Automation", value: "90%" },
     ],
-    accent: "#A78BFA",
+    image: "/project-sumo.jpg",
     content: (
       <div className="space-y-4">
-        <div className="rounded-xl border border-white/[0.06] bg-[#0a0a0a] p-4">
-          <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
-            Live Simulation
+        <div className="border border-white/5 bg-[#0c0c0c] p-4">
+          <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
+            LIVE SIMULATION
           </p>
-          <div className="relative h-28 overflow-hidden rounded-lg bg-[#080808]">
+          <div className="relative h-28 overflow-hidden bg-[#080808]">
             {Array.from({ length: 7 }, (_, l) => (
               <div
                 key={l}
@@ -269,47 +253,34 @@ const projects: Project[] = [
             {Array.from({ length: 10 }, (_, i) => (
               <div
                 key={i}
-                className="h-1 w-3 rounded-sm"
+                className="h-1 w-3"
                 style={{
                   position: "absolute",
                   top: `${((i % 7) + 1) * 12.5 - 1}%`,
                   left: `${((i * 23 + 7) % 90)}%`,
                   backgroundColor:
                     i % 3 === 0
-                      ? "#10B981"
+                      ? "var(--accent)"
                       : i % 3 === 1
-                        ? "#38BDF8"
-                        : "#A78BFA",
+                        ? "#A0A0A0"
+                        : "#6A6560",
                   opacity: 0.6,
                 }}
               />
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-2 text-[11px] uppercase tracking-wider text-white/25">
-              Key Results
-            </p>
-            <ul className="space-y-1.5 text-[13px] text-white/35">
-              <li>• 90% reduction in manual setup</li>
-              <li>• 22+ configurable simulation features</li>
-              <li>• Real-time metrics collection</li>
-            </ul>
+        <div className="border border-white/5 bg-[#0c0c0c] p-4 font-mono text-[11px] leading-relaxed text-[var(--fg-dim)]">
+          <div>
+            <span className="text-[var(--fg-muted)]">import</span> traci, sumolib
           </div>
-          <div className="rounded-xl border border-white/[0.06] bg-[#0a0a0a] p-4 font-mono text-[11px] leading-relaxed text-white/25">
-            <div>
-              <span className="text-[#A78BFA]">import</span> traci, sumolib
-            </div>
-            <div className="mt-1">
-              <span className="text-[#A78BFA]">def</span>{" "}
-              <span className="text-[#10B981]">run</span>():
-            </div>
-            <div className="pl-3">traci.start(cmd)</div>
-            <div className="pl-3">
-              <span className="text-[#A78BFA]">while</span> step():
-            </div>
-            <div className="pl-6">collect()</div>
+          <div className="mt-1">
+            <span className="text-[var(--fg-muted)]">def</span>{" "}
+            <span className="text-white/60">run_simulation</span>():
+          </div>
+          <div className="pl-3">traci.start(cmd)</div>
+          <div className="pl-3">
+            <span className="text-[var(--fg-muted)]">while</span> step(): collect()
           </div>
         </div>
       </div>
@@ -317,32 +288,32 @@ const projects: Project[] = [
   },
   {
     id: "hinge",
-    title: "Hinge Match-to-Meet Funnel",
-    category: "Product Analytics",
+    num: "04",
+    title: "HINGE MATCH-TO-MEET FUNNEL",
+    category: "PRODUCT ANALYTICS",
     description:
       "Analyzed the complete user funnel from matches to meetups and ran A/B tests that increased LTV by 18%.",
     longDescription:
-      "Analyzed the full user lifecycle on Hinge — from match to chat to date to meetup — identifying critical drop-off points in the conversion funnel. Designed and ran A/B tests on profile prompts, messaging features, and match algorithms. Results: 18% increase in lifetime value, 3× premium subscription likelihood, and 10-point NPS improvement. Recommendations were implemented product-wide and drove measurable revenue growth.",
+      "Analyzed the full user lifecycle on Hinge — from match to chat to date to meetup — identifying critical drop-off points. Designed and ran A/B tests that drove 18% LTV increase and 3× premium subscription likelihood.",
     tags: ["A/B Testing", "Funnel Analysis", "SQL", "Product Strategy"],
     metrics: [
       { label: "LTV Increase", value: "+18%" },
       { label: "Premium", value: "3×" },
       { label: "NPS", value: "+10" },
-      { label: "Revenue", value: "+22%" },
     ],
-    accent: "#F472B6",
+    image: "/project-hinge.jpg",
     content: (
       <div className="space-y-4">
-        <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-          <p className="mb-4 text-[11px] uppercase tracking-wider text-white/25">
-            Conversion Funnel
+        <div className="border border-white/5 bg-white/[0.02] p-4">
+          <p className="mb-4 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
+            CONVERSION FUNNEL
           </p>
           <div className="flex flex-col gap-2">
             {[
-              { label: "Matches", pct: "100%", w: "100%", c: "#F472B6" },
-              { label: "Chats", pct: "78%", w: "78%", c: "#E879F9" },
-              { label: "Dates", pct: "45%", w: "45%", c: "#C084FC" },
-              { label: "Meetups", pct: "22%", w: "22%", c: "#A78BFA" },
+              { label: "Matches", pct: "100%", w: "100%" },
+              { label: "Chats", pct: "78%", w: "78%" },
+              { label: "Dates", pct: "45%", w: "45%" },
+              { label: "Meetups", pct: "22%", w: "22%" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}
@@ -350,17 +321,12 @@ const projects: Project[] = [
                 whileInView={{ width: s.w }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-center justify-between rounded-lg px-4 py-2.5"
-                style={{
-                  backgroundColor: `${s.c}08`,
-                  borderLeft: `2px solid ${s.c}`,
-                }}
+                className="flex items-center justify-between border-l-2 border-[var(--fg-dim)] bg-white/[0.02] px-4 py-2.5"
               >
-                <span className="text-[13px] text-white/55">{s.label}</span>
-                <span
-                  className="text-[13px] font-medium"
-                  style={{ color: s.c }}
-                >
+                <span className="text-[13px] text-[var(--fg-muted)]">
+                  {s.label}
+                </span>
+                <span className="text-[13px] font-medium text-white">
                   {s.pct}
                 </span>
               </motion.div>
@@ -368,62 +334,43 @@ const projects: Project[] = [
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
-              A/B Test Results
+          <div className="border border-white/5 bg-white/[0.02] p-4">
+            <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
+              A/B TEST
             </p>
-            <div className="space-y-3">
+            <div className="flex gap-6">
               <div>
-                <div className="flex items-baseline justify-between">
-                  <span className="text-[11px] text-white/25">Control</span>
-                  <span className="text-sm font-semibold text-white/40">
-                    12.4%
-                  </span>
+                <div className="font-mono text-[9px] text-[var(--fg-dim)]">
+                  CONTROL
                 </div>
-                <div className="mt-1 h-1.5 w-full rounded-full bg-white/[0.04]">
-                  <div
-                    className="h-full rounded-full bg-white/10"
-                    style={{ width: "62%" }}
-                  />
+                <div className="text-lg font-semibold text-[var(--fg-muted)]">
+                  12.4%
                 </div>
               </div>
               <div>
-                <div className="flex items-baseline justify-between">
-                  <span className="text-[11px] text-[#F472B6]/50">Variant</span>
-                  <span className="text-sm font-semibold text-[#F472B6]">
-                    14.6%
-                  </span>
+                <div className="font-mono text-[9px] text-white/50">
+                  VARIANT
                 </div>
-                <div className="mt-1 h-1.5 w-full rounded-full bg-white/[0.04]">
-                  <div
-                    className="h-full rounded-full bg-[#F472B6]/40"
-                    style={{ width: "73%" }}
-                  />
-                </div>
+                <div className="text-lg font-semibold text-white">14.6%</div>
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-wider text-white/25">
-              Business Impact
+          <div className="border border-white/5 bg-white/[0.02] p-4">
+            <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
+              IMPACT
             </p>
-            <div className="space-y-2.5">
+            <div className="space-y-1.5">
               {[
-                { label: "Lifetime Value", value: "+18%", color: "#F472B6" },
-                { label: "Premium Likelihood", value: "3×", color: "#E879F9" },
-                { label: "Net Promoter Score", value: "+10", color: "#C084FC" },
-                { label: "Revenue Growth", value: "+22%", color: "#A78BFA" },
+                { label: "LTV", value: "+18%" },
+                { label: "Premium", value: "3×" },
+                { label: "NPS", value: "+10" },
               ].map((item) => (
-                <div key={item.label} className="flex items-center justify-between">
-                  <span className="text-[13px] text-white/35">
-                    {item.label}
-                  </span>
-                  <span
-                    className="text-[13px] font-medium"
-                    style={{ color: item.color }}
-                  >
-                    {item.value}
-                  </span>
+                <div
+                  key={item.label}
+                  className="flex items-center justify-between text-[13px]"
+                >
+                  <span className="text-[var(--fg-dim)]">{item.label}</span>
+                  <span className="font-medium text-white">{item.value}</span>
                 </div>
               ))}
             </div>
@@ -433,55 +380,6 @@ const projects: Project[] = [
     ),
   },
 ];
-
-function ProjectCard({
-  project,
-  onClick,
-}: {
-  project: Project;
-  onClick: () => void;
-}) {
-  return (
-    <motion.button
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.4 }}
-      whileHover={{ y: -3 }}
-      onClick={onClick}
-      className="glow-hover group w-full rounded-2xl border border-white/[0.04] bg-white/[0.015] p-6 text-left transition-all hover:border-white/[0.08] hover:bg-white/[0.03]"
-    >
-      <div className="mb-3 flex items-start justify-between">
-        <p
-          className="text-[11px] uppercase tracking-wider"
-          style={{ color: `${project.accent}80` }}
-        >
-          {project.category}
-        </p>
-        <ArrowUpRight
-          size={14}
-          className="text-white/10 transition-all group-hover:text-white/40 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-        />
-      </div>
-      <h3 className="mb-2 text-[17px] font-medium text-white/90">
-        {project.title}
-      </h3>
-      <p className="mb-5 text-[13px] leading-relaxed text-white/30">
-        {project.description}
-      </p>
-      <div className="flex gap-4">
-        {project.metrics.map((m) => (
-          <div key={m.label}>
-            <div className="text-sm font-semibold text-white/60">
-              {m.value}
-            </div>
-            <div className="text-[11px] text-white/20">{m.label}</div>
-          </div>
-        ))}
-      </div>
-    </motion.button>
-  );
-}
 
 function ProjectModal({
   project,
@@ -498,38 +396,37 @@ function ProjectModal({
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       <motion.div
-        initial={{ scale: 0.95, opacity: 0, y: 15 }}
+        initial={{ scale: 0.96, opacity: 0, y: 10 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.95, opacity: 0, y: 15 }}
-        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        exit={{ scale: 0.96, opacity: 0, y: 10 }}
+        transition={{ duration: 0.2 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-white/[0.06] bg-[#0c0c0c] p-6"
+        className="relative max-h-[85vh] w-full max-w-xl overflow-y-auto border border-white/5 bg-[#0c0c0c] p-6"
       >
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-white/40 transition-all hover:border-white/[0.15] hover:text-white"
+          className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center border border-white/10 bg-white/[0.03] text-white/40 transition-colors hover:text-white"
         >
           <X size={14} />
         </button>
         <div className="mb-5">
-          <p
-            className="mb-1 text-[11px] uppercase tracking-wider"
-            style={{ color: `${project.accent}80` }}
-          >
+          <p className="mb-1 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
             {project.category}
           </p>
-          <h3 className="text-xl font-medium text-white">{project.title}</h3>
+          <h3 className="text-xl font-semibold tracking-tight text-white">
+            {project.title}
+          </h3>
         </div>
-        <p className="mb-5 text-[13px] leading-relaxed text-white/35">
+        <p className="mb-5 text-sm font-light leading-relaxed tracking-wide text-[var(--fg-muted)]">
           {project.longDescription}
         </p>
         <div className="mb-5 flex flex-wrap gap-2">
           {project.tags.map((t) => (
             <span
               key={t}
-              className="rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1 text-[11px] text-white/35"
+              className="border border-white/5 px-3 py-1 font-mono text-[10px] tracking-wider text-[var(--fg-dim)]"
             >
               {t}
             </span>
@@ -545,8 +442,9 @@ export default function ProjectsSection() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="work" className="py-32">
-      <div className="mx-auto max-w-5xl px-6">
+    <section id="work" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 sm:px-10 md:pl-24 md:pr-16">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -554,25 +452,120 @@ export default function ProjectsSection() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="mb-4 text-[13px] text-white/30">Work</p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Selected projects.
-          </h2>
-          <p className="mt-4 max-w-lg text-[14px] text-white/35">
-            Each project involved end-to-end data work — from raw data
-            extraction to actionable business recommendations.
+          <p className="mb-4 font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
+            04 // WORK
           </p>
+          <h2
+            className="font-extrabold leading-[0.95] tracking-[-0.03em]"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+          >
+            Systems
+            <br />
+            <span className="text-[var(--fg-muted)]">shipped.</span>
+          </h2>
         </motion.div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          {projects.map((p) => (
-            <ProjectCard
-              key={p.id}
-              project={p}
-              onClick={() => setSelected(p)}
-            />
+        {/* Project exhibits */}
+        <div className="flex flex-col gap-0">
+          {projects.map((project, i) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="group/exhibit border-t border-white/5"
+            >
+              <div className="grid gap-6 py-10 sm:py-16 lg:grid-cols-[45%_55%] lg:gap-10">
+                {/* Image */}
+                <div className="relative overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="img-grayscale aspect-[16/10] w-full object-cover"
+                  />
+                  <div className="absolute inset-0 shadow-[inset_0_0_80px_40px_var(--bg)]" />
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col justify-center">
+                  <p className="mb-3 font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
+                    {project.num} {"//"} SYSTEM EXHIBIT
+                  </p>
+                  <h3
+                    className="mb-4 font-extrabold leading-[0.95] tracking-[-0.03em] text-white"
+                    style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+                  >
+                    {project.title}
+                  </h3>
+                  <p className="mb-6 max-w-[520px] text-sm font-light leading-relaxed tracking-wide text-[var(--fg-muted)]">
+                    {project.description}
+                  </p>
+
+                  {/* Metrics */}
+                  <div className="mb-6 flex gap-6">
+                    {project.metrics.map((m) => (
+                      <div key={m.label}>
+                        <div className="text-lg font-semibold text-white">
+                          {m.value}
+                        </div>
+                        <div className="mt-0.5 font-mono text-[9px] tracking-[0.15em] text-[var(--fg-dim)]">
+                          {m.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Tags */}
+                  <div className="mb-6 flex flex-wrap gap-1.5">
+                    {project.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="font-mono text-[9px] tracking-[0.1em] text-[var(--fg-dim)]"
+                      >
+                        {t}
+                        {t !== project.tags[project.tags.length - 1] && " /"}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex items-center gap-6">
+                    <button
+                      onClick={() => setSelected(project)}
+                      className="group/btn inline-flex items-baseline font-mono text-[10px] tracking-[0.2em] text-white transition-colors hover:text-gray-300"
+                      data-cursor-hover="true"
+                    >
+                      [ VIEW DETAILS ]
+                      <span className="btn-arrow ml-1 inline-block">↗</span>
+                    </button>
+                    <span className="font-mono text-[9px] tracking-wider text-[var(--fg-dim)]">
+                      {project.tags[0]} / {project.tags[1]}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="mt-12 border-t border-white/5 pt-8"
+        >
+          <a
+            href="#contact"
+            className="group/btn inline-flex items-baseline font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)] transition-colors hover:text-[var(--fg-muted)]"
+            data-cursor-hover="true"
+          >
+            WANT SOMETHING LIKE THIS? START A BUILD →
+            <span className="btn-arrow ml-1 inline-block">↗</span>
+          </a>
+        </motion.div>
       </div>
 
       <AnimatePresence>

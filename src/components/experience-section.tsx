@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Briefcase } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const experiences = [
   {
-    title: "ADAS Research Intern",
+    num: "01",
+    title: "ADAS RESEARCH INTERN",
     company: "WILP — BITS Pilani",
     period: "2025",
-    type: "Research",
     description:
-      "Worked on advanced driver-assistance systems (ADAS) research, building simulation infrastructure and data pipelines for traffic analysis.",
+      "Worked on advanced driver-assistance systems research, building simulation infrastructure and data pipelines for traffic analysis.",
     items: [
       "Built SUMOAPI v4 — a full-featured API for traffic simulation data, supporting multiple network configurations and real-time data streaming",
       "Automated data pipelines for real-time traffic metrics collection, processing data from 7-lane simulation networks spanning 10km",
@@ -27,8 +27,9 @@ export default function ExperienceSection() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="experience" className="py-32">
-      <div className="mx-auto max-w-5xl px-6">
+    <section id="experience" className="section-border py-24 sm:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 sm:px-10 md:pl-24 md:pr-16">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -36,16 +37,21 @@ export default function ExperienceSection() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="mb-4 text-[13px] text-white/30">Experience</p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Where I&apos;ve worked.
-          </h2>
-          <p className="mt-4 max-w-lg text-[14px] text-white/35">
-            Building real-world data solutions in research and product environments.
+          <p className="mb-4 font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
+            05 // EXPERIENCE
           </p>
+          <h2
+            className="font-extrabold leading-[0.95] tracking-[-0.03em]"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+          >
+            Where I&apos;ve
+            <br />
+            <span className="text-[var(--fg-muted)]">worked.</span>
+          </h2>
         </motion.div>
 
-        <div className="space-y-3">
+        {/* Experience items */}
+        <div>
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
@@ -53,28 +59,29 @@ export default function ExperienceSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4 }}
-              className="glow-hover rounded-2xl border border-white/[0.04] bg-white/[0.015] transition-all hover:border-white/[0.08]"
+              className="border-t border-white/5"
             >
               <button
                 onClick={() => setOpen(open === i ? -1 : i)}
-                className="flex w-full items-center justify-between p-5 text-left"
+                className="flex w-full items-center justify-between py-8 text-left"
+                data-cursor-hover="true"
               >
-                <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04]">
-                    <Briefcase size={16} className="text-white/35" />
-                  </div>
+                <div className="flex items-center gap-6">
+                  <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
+                    {exp.num}
+                  </span>
                   <div>
-                    <h3 className="text-[15px] font-medium text-white/90">
+                    <h3 className="text-sm font-medium tracking-[0.12em] text-white">
                       {exp.title}
                     </h3>
-                    <p className="text-[13px] text-white/30">
-                      {exp.company} · {exp.period} · {exp.type}
+                    <p className="mt-1 text-xs text-[var(--fg-dim)]">
+                      {exp.company} · {exp.period}
                     </p>
                   </div>
                 </div>
                 <ChevronDown
                   size={16}
-                  className={`text-white/15 transition-transform duration-300 ${open === i ? "rotate-180" : ""}`}
+                  className={`text-[var(--fg-dim)] transition-transform duration-300 ${open === i ? "rotate-180" : ""}`}
                 />
               </button>
               <AnimatePresence>
@@ -83,23 +90,23 @@ export default function ExperienceSection() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="border-t border-white/[0.04] px-5 pb-5 pt-4">
-                      <p className="mb-4 text-[13px] leading-relaxed text-white/35">
+                    <div className="pb-8 pl-10">
+                      <p className="mb-4 max-w-[720px] text-sm font-light leading-relaxed tracking-wide text-[var(--fg-muted)]">
                         {exp.description}
                       </p>
-                      <ul className="mb-4 space-y-2.5">
+                      <ul className="mb-4 space-y-2">
                         {exp.items.map((item, j) => (
                           <motion.li
                             key={j}
                             initial={{ opacity: 0, x: -8 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: j * 0.06 }}
-                            className="flex items-start gap-2.5 text-[13px] text-white/40"
+                            className="flex items-start gap-3 text-sm font-light tracking-wide text-[var(--fg-muted)]"
                           >
-                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/15" />
+                            <span className="mt-1.5 h-px w-2 shrink-0 bg-[var(--fg-dim)]" />
                             {item}
                           </motion.li>
                         ))}
@@ -108,7 +115,7 @@ export default function ExperienceSection() {
                         {exp.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1 text-[11px] text-white/30"
+                            className="border border-white/5 px-3 py-1 font-mono text-[10px] tracking-wider text-[var(--fg-dim)]"
                           >
                             {tag}
                           </span>

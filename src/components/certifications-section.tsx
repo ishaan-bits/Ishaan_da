@@ -1,31 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award } from "lucide-react";
 
 const certs = [
   {
+    num: "01",
     title: "Deloitte Data Analytics Job Simulation",
     org: "Deloitte",
     period: "2024",
-    skills: ["Data Analysis", "Forensic Technology", "Problem Solving"],
     description:
       "Completed a job simulation covering data analysis methodologies, forensic technology techniques, and structured problem-solving approaches used in consulting engagements.",
+    skills: ["Data Analysis", "Forensic Technology", "Problem Solving"],
   },
   {
+    num: "02",
     title: "NextLeap Product Manager Fellowship",
     org: "NextLeap",
     period: "2024",
-    skills: ["Product Management", "Strategy", "User Research"],
     description:
-      "Intensive fellowship covering product strategy, user research methodologies, roadmap planning, and cross-functional leadership skills for aspiring product managers.",
+      "Intensive fellowship covering product strategy, user research methodologies, roadmap planning, and cross-functional leadership skills.",
+    skills: ["Product Management", "Strategy", "User Research"],
   },
 ];
 
 export default function CertificationsSection() {
   return (
-    <section className="py-32">
-      <div className="mx-auto max-w-5xl px-6">
+    <section className="section-border py-24 sm:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 sm:px-10 md:pl-24 md:pr-16">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,16 +35,21 @@ export default function CertificationsSection() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="mb-4 text-[13px] text-white/30">Certifications</p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Continuous learning.
-          </h2>
-          <p className="mt-4 max-w-lg text-[14px] text-white/35">
-            Complementary certifications in analytics, consulting, and product management.
+          <p className="mb-4 font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
+            06 // CERTIFICATIONS
           </p>
+          <h2
+            className="font-extrabold leading-[0.95] tracking-[-0.03em]"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+          >
+            Continuous
+            <br />
+            <span className="text-[var(--fg-muted)]">learning.</span>
+          </h2>
         </motion.div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        {/* Cert cards */}
+        <div className="grid gap-4 sm:grid-cols-2">
           {certs.map((cert, i) => (
             <motion.div
               key={cert.title}
@@ -50,29 +57,30 @@ export default function CertificationsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              whileHover={{ y: -2 }}
-              className="glow-hover rounded-2xl border border-white/[0.04] bg-white/[0.015] p-6 transition-all hover:border-white/[0.08] hover:bg-white/[0.025]"
+              className="group border border-white/5 bg-white/[0.015] p-6 transition-all hover:border-white/10 hover:bg-white/[0.03]"
             >
               <div className="mb-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04]">
-                    <Award size={14} className="text-white/30" />
-                  </div>
-                  <span className="text-[13px] text-white/35">{cert.org}</span>
-                </div>
-                <span className="text-[11px] text-white/20">{cert.period}</span>
+                <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
+                  {cert.num}
+                </span>
+                <span className="font-mono text-[9px] tracking-wider text-[var(--fg-dim)]">
+                  {cert.period}
+                </span>
               </div>
-              <h3 className="mb-2 text-[15px] font-medium text-white/85">
+              <p className="mb-2 font-mono text-[10px] tracking-[0.15em] text-[var(--fg-muted)]">
+                {cert.org}
+              </p>
+              <h3 className="mb-3 text-sm font-medium text-white">
                 {cert.title}
               </h3>
-              <p className="mb-4 text-[13px] leading-relaxed text-white/30">
+              <p className="mb-4 text-xs font-light leading-relaxed tracking-wide text-[var(--fg-dim)]">
                 {cert.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {cert.skills.map((s) => (
                   <span
                     key={s}
-                    className="rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1 text-[11px] text-white/30"
+                    className="border border-white/5 px-2.5 py-1 font-mono text-[9px] tracking-wider text-[var(--fg-dim)]"
                   >
                     {s}
                   </span>

@@ -2,13 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { GraduationCap, Heart } from "lucide-react";
 
 const stats = [
-  { value: 95, suffix: "K+", label: "Customers analyzed" },
-  { value: 30, suffix: "K", label: "User profiles processed" },
-  { value: 22, suffix: "+", label: "Features engineered" },
-  { value: 90, suffix: "%", label: "Workflow automation" },
+  { value: 95, suffix: "K+", label: "CUSTOMERS ANALYZED" },
+  { value: 30, suffix: "K", label: "USER PROFILES" },
+  { value: 22, suffix: "+", label: "FEATURES ENGINEERED" },
+  { value: 90, suffix: "%", label: "WORKFLOW AUTOMATION" },
 ];
 
 const interests = [
@@ -20,13 +19,7 @@ const interests = [
   "User Research",
 ];
 
-function CountUp({
-  target,
-  suffix,
-}: {
-  target: number;
-  suffix: string;
-}) {
+function CountUp({ target, suffix }: { target: number; suffix: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
@@ -59,182 +52,133 @@ function CountUp({
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-32">
-      <div className="mx-auto max-w-5xl px-6">
-        {/* Top row */}
-        <div className="grid gap-20 md:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="mb-4 text-[13px] text-white/30">About</p>
-            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Data analyst with a
-              <br />
-              product mindset.
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col gap-5"
-          >
-            <p className="text-[15px] leading-relaxed text-white/45">
-              Curious by nature, analytical by mindset. I love translating raw
-              numbers into meaningful narratives that improve products and
-              business decisions. Whether it&apos;s running A/B tests, building
-              dashboards, or writing complex SQL queries — I enjoy every step of
-              the data-to-decision pipeline.
-            </p>
-            <p className="text-[15px] leading-relaxed text-white/45">
-              I believe great analytics isn&apos;t just about numbers — it&apos;s
-              about asking the right questions, understanding user behavior, and
-              communicating findings in a way that drives action.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Stats */}
+    <section id="about" className="section-border py-24 sm:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 sm:px-10 md:pl-24 md:pr-16">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-20 grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4"
+          transition={{ duration: 0.5 }}
+          className="mb-16"
         >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
-              className="glow-hover rounded-xl border border-white/[0.04] bg-white/[0.015] p-5 transition-all hover:border-white/[0.08]"
-            >
-              <div className="text-2xl font-semibold text-white">
-                <CountUp target={stat.value} suffix={stat.suffix} />
-              </div>
-              <div className="mt-1.5 text-[13px] text-white/30">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
+          <p className="mb-4 font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
+            02 // ABOUT
+          </p>
+          <h2
+            className="font-extrabold leading-[0.95] tracking-[-0.03em]"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+          >
+            A studio of one.
+            <br />
+            <span className="text-[var(--fg-muted)]">Built like a team.</span>
+          </h2>
         </motion.div>
 
-        {/* Education + Interests */}
-        <div className="mt-20 grid gap-8 md:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5 }}
-            className="rounded-2xl border border-white/[0.04] bg-white/[0.015] p-6"
-          >
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04]">
-                <GraduationCap size={14} className="text-white/35" />
-              </div>
-              <h3 className="text-[13px] font-medium text-white/50">
-                Education
-              </h3>
-            </div>
-            <h4 className="text-[15px] font-medium text-white/85">
-              B.E. Electrical & Electronics
-            </h4>
-            <p className="mt-1 text-[13px] text-white/35">
-              BITS Pilani — 2022–2026
-            </p>
-            <p className="mt-3 text-[13px] leading-relaxed text-white/30">
-              Focused on signal processing, control systems, and data analysis.
-              Active participant in analytics clubs and hackathons.
-            </p>
-          </motion.div>
-
+        {/* Content grid */}
+        <div className="grid gap-16 lg:grid-cols-[35%_65%]">
+          {/* Portrait */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-2xl border border-white/[0.04] bg-white/[0.015] p-6"
           >
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04]">
-                <Heart size={14} className="text-white/35" />
-              </div>
-              <h3 className="text-[13px] font-medium text-white/50">
-                Interests
-              </h3>
+            <div className="relative overflow-hidden">
+              <img
+                src="/portrait.jpg"
+                alt="Ishaan Parimal"
+                className="img-grayscale aspect-[3/4] w-full object-cover"
+              />
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_30px_var(--bg)]" />
             </div>
-            <div className="flex flex-wrap gap-2">
-              {interests.map((interest, i) => (
-                <motion.span
-                  key={interest}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+            <div className="mt-4">
+              <p className="font-mono text-[10px] tracking-[0.2em] text-[var(--fg-muted)]">
+                ISHAAN PARIMAL
+              </p>
+              <p className="mt-1 font-mono text-[9px] tracking-[0.15em] text-[var(--fg-dim)]">
+                INDEPENDENT DATA ANALYST · SQL + PYTHON + TABLEAU
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Bio + details */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="flex flex-col gap-10"
+          >
+            <p className="max-w-[720px] text-sm font-light leading-relaxed tracking-wide text-[var(--fg-muted)] sm:text-base">
+              Ishaan Parimal is an independent data analyst and final-year
+              Electrical & Electronics Engineering student at BITS Pilani. He
+              designs and builds analytics systems end-to-end — from raw data
+              extraction through SQL and Python to interactive dashboards and
+              business recommendations. He works directly with stakeholders,
+              eliminating handoffs and ensuring every insight translates into
+              action.
+            </p>
+
+            <p className="max-w-[720px] text-sm font-light leading-relaxed tracking-wide text-[var(--fg-muted)] sm:text-base">
+              Curious by nature, analytical by mindset. He believes great
+              analytics isn&apos;t just about numbers — it&apos;s about asking the right
+              questions, understanding user behavior, and communicating findings
+              in a way that drives product decisions.
+            </p>
+
+            {/* Education */}
+            <div>
+              <p className="mb-3 font-mono text-[10px] tracking-[0.25em] text-[var(--fg-dim)]">
+                EDUCATION
+              </p>
+              <h3 className="text-sm font-medium text-white">
+                B.E. Electrical & Electronics
+              </h3>
+              <p className="mt-1 text-xs text-[var(--fg-dim)]">
+                BITS Pilani — 2022–2026
+              </p>
+            </div>
+
+            {/* Interests */}
+            <div>
+              <p className="mb-3 font-mono text-[10px] tracking-[0.25em] text-[var(--fg-dim)]">
+                INTERESTS
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {interests.map((interest) => (
+                  <span
+                    key={interest}
+                    className="border border-white/10 px-3 py-1.5 font-mono text-[11px] tracking-wider text-[var(--fg-muted)] transition-colors hover:border-white/20 hover:text-white"
+                  >
+                    {interest}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.2 + i * 0.05 }}
-                  className="rounded-full border border-white/[0.06] bg-white/[0.03] px-3.5 py-1.5 text-[13px] text-white/40 transition-all hover:border-white/[0.12] hover:text-white/60"
+                  transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
+                  className="border-t border-white/5 pt-4"
                 >
-                  {interest}
-                </motion.span>
+                  <div className="text-2xl font-semibold tracking-tight text-white">
+                    <CountUp target={stat.value} suffix={stat.suffix} />
+                  </div>
+                  <div className="mt-1 font-mono text-[9px] tracking-[0.2em] text-[var(--fg-dim)]">
+                    {stat.label}
+                  </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
         </div>
-
-        {/* What I do */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-20"
-        >
-          <h3 className="mb-8 text-[13px] font-medium text-white/30">
-            What I do
-          </h3>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {[
-              {
-                icon: "📊",
-                title: "Data Analysis",
-                desc: "Transform raw datasets into actionable insights using SQL, Python, and statistical methods. From customer segmentation to funnel analysis.",
-              },
-              {
-                icon: "📈",
-                title: "Dashboard Design",
-                desc: "Build interactive dashboards and visualizations in Tableau and Recharts that tell clear stories and drive product decisions.",
-              },
-              {
-                icon: "🔬",
-                title: "Product Analytics",
-                desc: "Run A/B tests, track key metrics, and uncover user behavior patterns that inform product strategy and growth initiatives.",
-              },
-            ].map((service, i) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="glow-hover rounded-2xl border border-white/[0.04] bg-white/[0.015] p-6 transition-all hover:border-white/[0.08]"
-              >
-                <div className="mb-3 text-xl">{service.icon}</div>
-                <h4 className="mb-2 text-[15px] font-medium text-white/80">
-                  {service.title}
-                </h4>
-                <p className="text-[13px] leading-relaxed text-white/30">
-                  {service.desc}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

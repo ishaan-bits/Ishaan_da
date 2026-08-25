@@ -1,6 +1,7 @@
 "use client";
 
 import Background from "@/components/background";
+import Cursor from "@/components/cursor";
 import Navbar from "@/components/navbar";
 import HeroSection from "@/components/hero-section";
 import AboutSection from "@/components/about-section";
@@ -15,12 +16,13 @@ export default function Home() {
   return (
     <>
       <Background />
+      <Cursor />
       <Navbar />
       <main className="relative z-10">
         <HeroSection />
-        <AboutSection />
         <ProjectsSection />
         <SkillsSection />
+        <AboutSection />
         <ExperienceSection />
         <CertificationsSection />
         <ContactSection />
