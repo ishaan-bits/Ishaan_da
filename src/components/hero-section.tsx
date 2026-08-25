@@ -100,7 +100,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.8 }}
-        className="relative z-10 mt-auto grid grid-cols-2 gap-6 border-t border-white/5 pt-8 sm:grid-cols-4"
+        className="relative z-10 mt-auto grid grid-cols-2 gap-6 border-t border-white/10 pt-8 sm:grid-cols-4"
       >
         {[
           { value: "95K+", label: "CUSTOMERS" },
@@ -117,7 +117,7 @@ export default function HeroSection() {
             <div className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
               {stat.value}
             </div>
-            <div className="mt-1 font-mono text-[9px] tracking-[0.2em] text-[var(--fg-dim)]">
+            <div className="mt-1 font-mono text-[9px] tracking-[0.2em] text-[var(--fg-muted)]">
               {stat.label}
             </div>
           </motion.div>
