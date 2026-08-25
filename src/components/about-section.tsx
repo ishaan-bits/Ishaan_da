@@ -86,7 +86,7 @@ export default function AboutSection() {
           >
             <div className="relative overflow-hidden border border-white/5">
               <img
-                src="/portrait.jpg"
+                src="/portrait.png"
                 alt="Ishaan Parimal"
                 className="img-grayscale aspect-[3/4] w-full object-cover"
               />
