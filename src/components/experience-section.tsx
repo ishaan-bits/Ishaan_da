@@ -58,12 +58,12 @@ export default function ExperienceSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4 }}
-              className="border-t border-white/5"
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="border-t border-white/8"
             >
               <button
                 onClick={() => setOpen(open === i ? -1 : i)}
-                className="flex w-full items-center justify-between py-8 text-left"
+                className="flex w-full items-center justify-between py-8 text-left transition-opacity hover:opacity-80"
                 data-cursor-hover="true"
               >
                 <div className="flex items-center gap-6">
@@ -90,7 +90,7 @@ export default function ExperienceSection() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     className="overflow-hidden"
                   >
                     <div className="pb-8 pl-10">

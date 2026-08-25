@@ -17,16 +17,20 @@ const items = [
 
 export default function Marquee() {
   return (
-    <div className="section-border overflow-hidden border-t border-b border-white/5 py-5">
+    <div className="section-border overflow-hidden border-t border-b border-white/8 py-5">
       <motion.div
         className="flex whitespace-nowrap"
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "linear",
+        }}
       >
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
-            className="mx-6 font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]"
+            className="mx-6 font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)] transition-colors duration-300 hover:text-[var(--accent)]"
           >
             {item}
             <span className="ml-6 text-white/10">◆</span>

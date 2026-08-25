@@ -463,11 +463,12 @@ export default function ProjectsSection() {
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="group border-l-2 border-white/5 bg-white/[0.01] p-6 transition-all hover:border-l-[var(--accent)] hover:bg-white/[0.025] sm:p-8"
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -2 }}
+              className="group border-l-2 border-white/10 bg-white/[0.015] p-6 duration-300 hover:border-l-[var(--accent)] hover:bg-white/[0.03] hover:shadow-[0_0_30px_-10px_var(--accent)] sm:p-8"
             >
               <div className="grid gap-6 lg:grid-cols-[1fr_2fr] lg:gap-10">
                 {/* Left: meta */}

@@ -139,10 +139,30 @@
 
 /* Button arrow hover */
 .btn-arrow {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .group:hover .btn-arrow {
   transform: translate(3px, -3px);
+}
+
+/* Smooth section reveal */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glow effect on hover */
+.glow-hover {
+  transition: box-shadow 0.4s ease;
+}
+.glow-hover:hover {
+  box-shadow: 0 0 30px -10px var(--accent);
 }
 
 /* Accordion */
