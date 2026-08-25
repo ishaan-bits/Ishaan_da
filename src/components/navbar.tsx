@@ -28,7 +28,7 @@ export default function Navbar() {
         transition={{ duration: 0.5, delay: 0.1 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "border-b border-white/5 bg-[#0A0A0A]/80 backdrop-blur-xl"
+            ? "border-b border-white/10 bg-[#0A0A0A]/80 backdrop-blur-xl"
             : "bg-transparent"
         }`}
       >
@@ -41,7 +41,7 @@ export default function Navbar() {
             <span className="flex h-6 w-6 items-center justify-center border border-[var(--accent)]/30 bg-[var(--accent)]/5 font-mono text-[10px] text-[var(--accent)]">
               I
             </span>
-            <span className="font-mono text-[11px] tracking-[0.15em] text-white/60 transition-colors group-hover:text-white">
+            <span className="font-mono text-[11px] tracking-[0.15em] text-white/70 transition-colors group-hover:text-white">
               ISHAAN
             </span>
           </a>
@@ -51,7 +51,7 @@ export default function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
-                className="rounded-sm px-3 py-1.5 font-mono text-[10px] tracking-[0.15em] text-white/35 transition-all hover:bg-white/[0.04] hover:text-white/70"
+                className="rounded-sm px-3 py-1.5 font-mono text-[10px] tracking-[0.15em] text-white/50 transition-all hover:bg-white/[0.06] hover:text-white/80"
                 data-cursor-hover="true"
               >
                 {item.label}
@@ -59,7 +59,7 @@ export default function Navbar() {
             ))}
             <a
               href="#contact"
-              className="ml-2 border border-[var(--accent)]/20 bg-[var(--accent)]/5 px-4 py-1.5 font-mono text-[10px] tracking-[0.15em] text-[var(--accent)] transition-all hover:bg-[var(--accent)]/10"
+              className="ml-2 border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-4 py-1.5 font-mono text-[10px] tracking-[0.15em] text-[var(--accent)] transition-all hover:bg-[var(--accent)]/20"
               data-cursor-hover="true"
             >
               CONTACT

@@ -26,7 +26,7 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-8 flex items-center gap-4"
         >
-          <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--fg-dim)]">
+          <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--fg-muted)]">
             DATA ANALYST — INDIA
           </span>
           <span className="h-px flex-1 bg-white/5" />
@@ -77,7 +77,7 @@ export default function HeroSection() {
         >
           <a
             href="#work"
-            className="group/btn inline-flex items-center gap-2 border border-[var(--accent)]/30 bg-[var(--accent)]/5 px-5 py-2.5 font-mono text-[11px] tracking-[0.15em] text-[var(--accent)] transition-all hover:bg-[var(--accent)]/10 hover:border-[var(--accent)]/50"
+            className="group/btn inline-flex items-center gap-2 border border-[var(--accent)]/40 bg-[var(--accent)]/10 px-5 py-2.5 font-mono text-[11px] tracking-[0.15em] text-[var(--accent)] transition-all hover:bg-[var(--accent)]/20 hover:border-[var(--accent)]/60"
             data-cursor-hover="true"
           >
             VIEW WORK
@@ -87,7 +87,7 @@ export default function HeroSection() {
           </a>
           <a
             href="#contact"
-            className="font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)] transition-colors hover:text-[var(--fg-muted)]"
+            className="font-mono text-[10px] tracking-[0.2em] text-[var(--fg-muted)] transition-colors hover:text-white"
             data-cursor-hover="true"
           >
             [ CONTACT → ]

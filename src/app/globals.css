@@ -51,8 +51,8 @@
 :root {
   --bg: #0A0A0A;
   --fg: #ffffff;
-  --fg-muted: #A0A0A0;
-  --fg-dim: #6A6560;
+  --fg-muted: #C0C0C0;
+  --fg-dim: #8A8580;
   --accent: #38BDF8;
   --background: #0A0A0A;
   --foreground: #ffffff;
@@ -65,8 +65,8 @@
   --secondary: rgba(255, 255, 255, 0.05);
   --secondary-foreground: #ffffff;
   --muted: rgba(255, 255, 255, 0.04);
-  --muted-foreground: #A0A0A0;
-  --accent: rgba(255, 255, 255, 0.05);
+  --muted-foreground: #C0C0C0;
+  --accent: #38BDF8;
   --accent-foreground: #ffffff;
   --destructive: #FF4444;
   --border: rgba(255, 255, 255, 0.08);
@@ -125,7 +125,7 @@
 
 /* Section border pattern */
 .section-border {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Image grayscale treatment */
