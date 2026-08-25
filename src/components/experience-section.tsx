@@ -7,19 +7,19 @@ import { ChevronDown } from "lucide-react";
 const experiences = [
   {
     num: "01",
-    title: "ADAS RESEARCH INTERN",
-    company: "WILP — BITS Pilani",
-    period: "2025",
+    title: "RESEARCH INTERN — COMMUNICATION SYSTEMS",
+    company: "WILP ADAS Lab — BITS Pilani",
+    period: "Jul 2025 — Oct 2025",
     description:
-      "Worked on advanced driver-assistance systems research, building simulation infrastructure and data pipelines for traffic analysis.",
+      "Developed an Optical Camera Communication (OCC) simulation environment in NS-3.42, integrating VLC frameworks and SUMO-based vehicular traffic modeling for optical wireless channel research.",
     items: [
-      "Built SUMOAPI v4 — a full-featured API for traffic simulation data, supporting multiple network configurations and real-time data streaming",
-      "Automated data pipelines for real-time traffic metrics collection, processing data from 7-lane simulation networks spanning 10km",
-      "Generated ML-ready datasets from simulation output, enabling predictive traffic modeling and congestion analysis",
-      "Reduced manual setup by 90% through end-to-end workflow automation, cutting project onboarding time from hours to minutes",
-      "Designed 22+ configurable simulation features for different traffic scenarios and urban planning use cases",
+      "Installed and configured NS-3.42 with CMake build system, resolving dependency linkage issues from waf-to-CMake migration and validating with point-to-point and LR-WPAN simulations",
+      "Integrated NetAnim visualization to observe node interactions, packet flows, and event-driven simulation behaviors in real time",
+      "Adapted and partially integrated an open-source VLC module into NS-3.42, enabling optical channel creation and link-level simulation",
+      "Generated realistic vehicular mobility traces in SUMO using Poisson-based randomTrips.py, exported trajectories to Excel for analysis and future NS-3 OCC integration",
+      "Studied Lambertian radiation model, DC channel gain, OCC receiver modeling (frame rate, pixel sampling, rolling shutter), and SNR/BER analysis for OOK modulation",
     ],
-    tags: ["Python", "SUMO", "TraCI", "API Design", "Automation"],
+    tags: ["NS-3", "C++", "Python", "SUMO", "TraCI", "VLC", "NetAnim", "CMake"],
   },
 ];
 

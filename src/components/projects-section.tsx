@@ -213,58 +213,66 @@ const projects: Project[] = [
   {
     id: "sumo",
     num: "03",
-    title: "SUMO Traffic Analytics",
-    category: "Simulation",
+    title: "OCC Simulation — SUMO Traffic Modeling",
+    category: "Research · Simulation",
     description:
-      "Built a traffic simulation analytics platform using Python, SUMO, and TraCI with automated data pipelines and ML-ready datasets.",
+      "Generated realistic vehicular mobility traces for Optical Camera Communication research using SUMO with Poisson-based trip generation and TraCI data logging.",
     longDescription:
-      "Developed a full-stack traffic simulation analytics system using SUMO and TraCI. Automated data pipelines collecting real-time metrics from 7-lane networks spanning 10km.",
-    tags: ["Python", "SUMO", "TraCI", "Automation"],
+      "Built SUMOAPI v4 — a full-featured Tkinter GUI for configuring SUMO traffic simulations with 7-page guided workflow. Generated Poisson-distributed vehicle arrivals via randomTrips.py for realistic mobility patterns, then exported trajectories for NS-3-based OCC channel simulations.",
+    tags: ["Python", "SUMO", "TraCI", "NS-3", "VLC", "Poisson Modeling"],
     metrics: [
-      { label: "Lanes", value: "7" },
-      { label: "Network", value: "10 km" },
-      { label: "Auto", value: "90%" },
+      { label: "Workflow", value: "7 pages" },
+      { label: "Vehicles", value: "1–6 tracked" },
+      { label: "Data", value: "23 cols" },
     ],
     accent: "#A78BFA",
     content: (
       <div className="space-y-4">
         <div className="border border-white/5 bg-[#0c0c0c] p-4">
           <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-[var(--fg-dim)]">
-            SIMULATION
+            SIMULATION PIPELINE
           </p>
-          <div className="relative h-24 overflow-hidden bg-[#080808]">
-            {Array.from({ length: 7 }, (_, l) => (
-              <div
-                key={l}
-                className="absolute h-px w-full bg-white/[0.04]"
-                style={{ top: `${(l + 1) * 12.5}%` }}
-              />
-            ))}
-            {Array.from({ length: 8 }, (_, i) => (
-              <div
-                key={i}
-                className="h-1 w-3"
-                style={{
-                  position: "absolute",
-                  top: `${((i % 7) + 1) * 12.5 - 1}%`,
-                  left: `${((i * 27 + 5) % 85)}%`,
-                  backgroundColor:
-                    i % 3 === 0 ? "#A78BFA" : i % 3 === 1 ? "#38BDF8" : "#10B981",
-                  opacity: 0.5,
-                }}
-              />
-            ))}
+          <div className="relative h-24 overflow-hidden bg-[#080808] p-3">
+            <div className="flex items-center gap-2 text-[9px] font-mono text-[var(--fg-dim)]">
+              {["Net", "Routes", "Vehicles", "Behavior", "TraCI"].map(
+                (step, i) => (
+                  <div key={step} className="flex items-center gap-2">
+                    <div
+                      className="border border-white/10 bg-white/[0.03] px-2 py-1"
+                      style={{
+                        borderColor:
+                          i === 4 ? "#A78BFA" : "rgba(255,255,255,0.08)",
+                      }}
+                    >
+                      {step}
+                    </div>
+                    {i < 4 && (
+                      <span className="text-[var(--fg-dim)]">→</span>
+                    )}
+                  </div>
+                )
+              )}
+            </div>
+            <div className="mt-3 flex gap-3 text-[9px] font-mono text-[var(--fg-dim)]">
+              <span className="text-[#A78BFA]">Poisson λ</span>
+              <span>·</span>
+              <span>randomTrips.py</span>
+              <span>·</span>
+              <span>CSV export</span>
+            </div>
           </div>
         </div>
         <div className="border border-white/5 bg-[#0c0c0c] p-4 font-mono text-[11px] leading-relaxed text-[var(--fg-dim)]">
           <div>
-            <span className="text-[var(--accent)]">import</span> traci
+            <span className="text-[var(--accent)]">import</span> traci, csv
           </div>
           <div className="mt-1">
             <span className="text-[var(--accent)]">def</span>{" "}
-            <span className="text-white/50">run</span>():
+            <span className="text-white/50">log_relative</span>():
           </div>
-          <div className="pl-3">traci.start(cmd)</div>
+          <div className="pl-3">
+            w.writerow([step, time, subject_id, ...])
+          </div>
         </div>
       </div>
     ),
